@@ -11,5 +11,6 @@ router.get('/login', (req, res) => res.render('login'));
 // Pages with data
 router.get('/dashboard', isAuthenticated, PageController.getDashboard);
 router.get('/journals', isAuthenticated, PageController.getJournals);//DN
+router.get('/journals/new', isAuthenticated, PageController.createNewJournal);//DN
 
 module.exports = router;
