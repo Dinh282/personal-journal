@@ -40,4 +40,6 @@ Journals.init(
   }
 );
 
+Journals.belongsTo(User, { foreignKey: 'userId' });
+
 module.exports = Journals;
