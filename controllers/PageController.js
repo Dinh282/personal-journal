@@ -17,7 +17,13 @@ getJournals: (req, res) => {
     isAuthenticated: req.session.isAuthenticated,
   })
 
+},
+
+
+createNewJournal: (req, res) => {
+  res.render('new-journal')
 }
+
 //DN
 
 
