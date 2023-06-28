@@ -3,6 +3,11 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../db/config');
 
+// 
+// const Journal = require('./Journal');
+
+// 
+
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -58,8 +63,10 @@ User.init(
     },
     sequelize,
     underscored: true,
-    modelName: 'User',
+    modelName: 'user',
   }
 );
+
+
 
 module.exports = User;
