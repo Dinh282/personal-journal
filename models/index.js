@@ -1,7 +1,10 @@
 const User = require('./User');
-const Journals = require('./Journals');
+const Journal = require('./Journal');
 
 module.exports = {
   User,
-  Journals,
+  Journal,
 };
+
+User.hasMany(Journal, { foreignKey: 'userId' });
+Journal.belongsTo(User, { foreignKey: 'userId' });

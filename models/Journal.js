@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
-const User = require('./User');
 
-class Journals extends Model {}
+class Journal extends Model {}
 
-Journals.init(
+Journal.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -28,7 +27,7 @@ Journals.init(
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: User,
+        model: 'users',
         key: 'id',
       },
     },
@@ -36,10 +35,8 @@ Journals.init(
   {
     sequelize,
     underscored: true,
-    modelName: 'Journals',
+    modelName: 'journal',
   }
 );
 
-Journals.belongsTo(User, { foreignKey: 'userId' });
-
-module.exports = Journals;
+module.exports = Journal;
