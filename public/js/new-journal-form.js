@@ -21,7 +21,13 @@ const newJournalFormHandler = async event => {
       }
     }
   };
-  
-  document
+
+
+   document
     .querySelector('.new-journal-form')
     .addEventListener('submit', newJournalFormHandler);
+
+
+
+
+  
