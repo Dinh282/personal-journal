@@ -3,12 +3,13 @@ const { Journal } = require('../models');
 module.exports = {
     createNewJournal: async (req, res) => {
       const {
-        body: { title, content, },
+        body: { title, content,},
       } = req;
       try {
         const newJournal = await Journal.create({
           title,
           content,
+          userID: req.session.userID,
         });
   
         res.status(200).json(newJournal)
