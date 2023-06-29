@@ -10,7 +10,6 @@ module.exports = {
   },
 
 
-
 //DN
 getJournals: async (req, res) => {
   try {
@@ -39,7 +38,18 @@ createNewJournal: (req, res) => {
   res.render('new-journal', {
     isAuthenticated: req.session.isAuthenticated,
   })
+},
+
+viewJournal: (req, res) => {
+  res.render('journal-view', {
+    isAuthenticated: req.session.isAuthenticated,
+
+
+
+
+  })
 }
+
 
 //DN
 

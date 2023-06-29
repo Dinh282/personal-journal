@@ -19,7 +19,7 @@
   <ul class="space-y-4 py-3 px-4">
     {{#each journals}}
       <li>
-        <a href="/journals/edit/{{this.id}}" class="btn flex items-center justify-between">
+        <a href="/journals/view/{{this.id}}" class="btn flex items-center justify-between">
           <span class="mr-2">{{this.title}}</span>
           <span class="mr-2">{{this.content}}</span>
           <span class="text-sm">{{format_date createdAt}}</span>

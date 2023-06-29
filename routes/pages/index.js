@@ -12,5 +12,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/dashboard', isAuthenticated, PageController.getDashboard);
 router.get('/journals', isAuthenticated, PageController.getJournals);//DN
 router.get('/journals/new', isAuthenticated, PageController.createNewJournal);//DN
+router.get('/journals/view/:id', isAuthenticated, PageController.viewJournal);//DN
+
 
 module.exports = router;
