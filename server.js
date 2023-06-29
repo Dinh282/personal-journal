@@ -6,11 +6,14 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sequelize = require('./db/config');
 const routes = require('./routes');
+const helpers = require('./utils/helpers');//DN
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-const hbs = exphbs.create();
+
+//Create the Handlebars.js engine object with custom helper functions.
+const hbs = exphbs.create({ helpers });
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,
@@ -23,6 +26,8 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
+
+
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

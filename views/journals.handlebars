@@ -22,7 +22,7 @@
         <a href="/journals/edit/{{this.id}}" class="btn flex items-center justify-between">
           <span class="mr-2">{{this.title}}</span>
           <span class="mr-2">{{this.content}}</span>
-          <span class="text-sm">{{this.createdAt}}</span>
+          <span class="text-sm">{{format_date createdAt}}</span>
         </a>
       </li>
     {{/each}}
