@@ -4,7 +4,8 @@
   "description": "starter template for project 2",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev:tailwind": "tailwind build -o public/css/tailwind.css",
+    "dev": "nodemon --exec \"npm run dev:tailwind && node server.js\"",
     "seed": "node seeds",
     "lint": "eslint --fix --ext .js .",
     "test": "test"
@@ -14,6 +15,7 @@
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "bcrypt": "^5.1.0",
+    "concurrently": "^8.2.0",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
