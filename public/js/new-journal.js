@@ -1,32 +1,26 @@
-const newPostHandler = async (event) => {
+const newJournalFormHandler = async event => {
     event.preventDefault();
-  
-    const title = document.querySelector('#journal-title').value.trim();
+    const journalTitle = document.querySelector('#journal-title').value.trim();
     const journalDesc = document.querySelector('#journal-desc').value.trim();
   
-    
-    // if(!title || !journalDesc){
-    //     alert("You must provide a title and content for your post.")
-    // }
-
-    if (title && journalDesc) {
-      const response = await fetch(`/api/journals`, {
+    if (journalTitle && journalDesc) {
+      const response = await fetch('/api/journals', {
         method: 'POST',
-        body: JSON.stringify({ title, content: journalDesc }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        body: JSON.stringify({ journalTitle, journalDesc }),
+        headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
+        console.log("here")
         document.location.replace('/journals');
-        
       } else {
-        alert('Failed to create a new post');
+        const { message } = await response.json();
+        // eslint-disable-next-line no-undef
+        showAlert({ target: 'title-alert', message, type: 'danger' });
       }
     }
   };
-
+  
   document
-  .querySelector('.new-post-form')
-  .addEventListener('submit', newPostHandler);
+    .querySelector('.new-journal-form')
+    .addEventListener('submit', newJournalFormHandler);
