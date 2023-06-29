@@ -1,15 +1,33 @@
 <h1 class="text-center mt-5">{{ journalPageMessage }}</h1>
 
-<h2 class="text-center mt-5">We'll have a Create New Jounral button for the user
+<p class="text-center mt-5">We'll have a Create New Jounral button for the user
     to click on to create a new journal. When they click on it, it should take them to
     /journals/new which would render a form to fill out for their journal title and description.
     The HTML code for this page goes inside journals.handlebars. We should also include
      &lt;script&gt; src="/js/script.js" async&gt;&lt;/script&lt; to link a script file to handle 
      requesting for the list of available journals data so that we can inject it into the template(journals.handlebars).
-</h1>
+</p>
 
 <button class="btn btn-primary btn-lg w-50 mt-4 p-3">
   <a href="/journals/new" style="color: inherit; text-decoration: none;">
     Create New Journal
   </a>
 </button>
+
+
+{{#if journals.length}}
+  <ul class="space-y-4 py-3 px-4">
+    {{#each journals}}
+      <li>
+        <a href="/journals/view/{{this.id}}" class="btn flex items-center justify-between">
+          <span class="mr-2">{{this.title}}</span>
+          <span class="mr-2">{{this.content}}</span>
+          <span class="text-sm">{{format_date createdAt}}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="text-2xl text-center pt-8 text-stone-600">You haven't created any Journals yet. Click the Create New Journal button to start one.</p>
+{{/if}}
+
