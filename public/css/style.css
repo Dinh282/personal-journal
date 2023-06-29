@@ -49,9 +49,9 @@ body {
 }
 
 .flipbook {
-  height: 70%;
+  height:100%;
   transition: margin-left 0.25s ease-out;
-  width: 70%;
+  width: 100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -61,7 +61,7 @@ body {
 }
 
 .flipbook .page {
-  height: 50%;
+  height: 100%;
   width: 100%;
 }
 

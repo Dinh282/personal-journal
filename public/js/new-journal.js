@@ -6,7 +6,7 @@ const newJournalFormHandler = async event => {
     if (journalTitle && journalDesc) {
       const response = await fetch('/api/journals', {
         method: 'POST',
-        body: JSON.stringify({ title: journalTitle, content: journalDesc }),
+        body: JSON.stringify({ title: journalTitle, content: journalDesc,}),
         headers: { 'Content-Type': 'application/json' },
       });
   

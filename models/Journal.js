@@ -25,15 +25,15 @@ Journal.init(
       defaultValue: DataTypes.NOW,
     },
     userId: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       // allowNull: false,
       references: {
-        model: 'users',
+        model: 'user',
         key: 'id',
       },
     journalId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: 'journal',
         key: 'id',

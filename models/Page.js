@@ -23,7 +23,7 @@ Page.init(
       type: DataTypes.UUID,
       // allowNull: false,
       references: {
-        model: 'users',
+        model: 'user',
         key: 'id',
       },
     },

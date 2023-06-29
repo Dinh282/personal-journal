@@ -14,13 +14,14 @@ module.exports = {
 getJournals: async (req, res) => {
   try {
     const dbJournalData = await Journal.findAll({
-      include: [{ model: User, attributes: ['email'] }],
+      where: { userId: req.session.currentUser.id},
+      include: [{ model: User, attributes: ['email'], foreignKey: 'userId' }],
     });
 
     const journals = dbJournalData.map((journal) => 
     journal.get({ plain: true }));
 
-    console.log(journals);
+    console.log("here", journals);
     
     res.render('journals', {
       journalPageMessage: 'User Created Journals To Be Rendered Here',
@@ -34,19 +35,15 @@ getJournals: async (req, res) => {
 },
 
 
-createNewJournal: (req, res) => {
+renderCreateNewJournal: (req, res) => {
   res.render('new-journal', {
     isAuthenticated: req.session.isAuthenticated,
   })
 },
 
-viewJournal: (req, res) => {
+viewJournalPages: (req, res) => {
   res.render('journal-view', {
     isAuthenticated: req.session.isAuthenticated,
-
-
-
-
   })
 }
 

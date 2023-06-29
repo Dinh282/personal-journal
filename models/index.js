@@ -18,6 +18,12 @@ Journal.belongsTo(User, {
  });
 
 
+Journal.hasMany(Page, {
+  foreignKey: 'journalId',
+  onDelete: 'CASCADE',
+})
+
+
 Page.belongsTo(Journal, {
   foreignKey: 'journalId'
 });
