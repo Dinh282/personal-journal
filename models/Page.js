@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
-class Journal extends Model {}
+class Page extends Model {}
 
-Journal.init(
+Page.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -19,34 +19,20 @@ Journal.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
     userId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       // allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       },
-    journalId: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      references: {
-        model: 'journal',
-        key: 'id',
-      }
-    }
     },
   },
   {
     sequelize,
-    freezeTableName: true,
     underscored: true,
-    modelName: 'journal',
+    modelName: 'page',
   }
 );
 
-module.exports = Journal;
+module.exports = Page;
