@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../db/config');
 
-
 class Journal extends Model {}
 
 Journal.init(
@@ -39,7 +38,5 @@ Journal.init(
     modelName: 'journal',
   }
 );
-
-
 
 module.exports = Journal;
