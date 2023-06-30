@@ -1,10 +1,38 @@
-const { User, Journal } = require('./models');
+const { User, Journal, Page } = require('./models');
 const sequelize = require('./db/config');
+
+const tableExists = async tableName => {
+  const query = `
+    SELECT COUNT(*) as count
+    FROM information_schema.tables
+    WHERE table_name = :tableName
+  `;
+  const [result] = await sequelize.query(query, {
+    replacements: { tableName },
+    type: sequelize.QueryTypes.SELECT,
+  });
+  return result.count > 0;
+};
 
 const seedDatabase = async () => {
   try {
-    await Journal.destroy({ where: {} });
-    await User.destroy({ where: {} });
+    // Create tables if they do not exist
+    await sequelize.sync();
+
+    // Clear existing data
+    const pageTableExists = await tableExists('pages');
+    const journalTableExists = await tableExists('journals');
+    const userTableExists = await tableExists('users');
+
+    if (pageTableExists) {
+      await Page.destroy({ where: {} });
+    }
+    if (journalTableExists) {
+      await Journal.destroy({ where: {} });
+    }
+    if (userTableExists) {
+      await User.destroy({ where: {} });
+    }
 
     const users = await User.bulkCreate([
       {
@@ -34,28 +62,49 @@ const seedDatabase = async () => {
     ]);
 
     for (const user of users) {
-      await Journal.bulkCreate([
+      const journals = await Journal.bulkCreate([
         {
-          title: 'Journal Entry 1',
+          title: 'Journal 1',
           content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
           date: new Date(),
           userId: user.id,
         },
         {
-          title: 'Journal Entry 2',
+          title: 'Journal 2',
           content:
             'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           date: new Date(),
           userId: user.id,
         },
-        {
-          title: 'Journal Entry 3',
-          content:
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-          date: new Date(),
-          userId: user.id,
-        },
       ]);
+
+      for (const journal of journals) {
+        await Page.bulkCreate([
+          {
+            title: 'Page 1',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            journalId: journal.id,
+          },
+          {
+            title: 'Page 2',
+            content:
+              'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            journalId: journal.id,
+          },
+          {
+            title: 'Page 3',
+            content:
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            journalId: journal.id,
+          },
+          {
+            title: 'Page 4',
+            content:
+              'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            journalId: journal.id,
+          },
+        ]);
+      }
     }
 
     console.log('Seeding completed successfully.');
@@ -67,4 +116,3 @@ const seedDatabase = async () => {
 };
 
 seedDatabase();
-console.log();
