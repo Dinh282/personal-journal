@@ -8,22 +8,21 @@ module.exports = {
   Page,
 };
 
-User.hasMany(Journal, { 
+User.hasMany(Journal, {
   foreignKey: 'userId',
-  onDelete:'CASCADE' });
+  onDelete: 'CASCADE',
+});
 
-Journal.belongsTo(User, { 
+Journal.belongsTo(User, {
   foreignKey: 'userId',
-  onDelete: 'CASCADE'
- });
-
+  onDelete: 'CASCADE',
+});
 
 Journal.hasMany(Page, {
   foreignKey: 'journalId',
   onDelete: 'CASCADE',
-})
-
+});
 
 Page.belongsTo(Journal, {
-  foreignKey: 'journalId'
+  foreignKey: 'journalId',
 });

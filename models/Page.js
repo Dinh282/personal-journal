@@ -19,11 +19,11 @@ Page.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userId: {
+    journalId: {
       type: DataTypes.UUID,
-      // allowNull: false,
+      allowNull: false,
       references: {
-        model: 'user',
+        model: 'journal',
         key: 'id',
       },
     },
