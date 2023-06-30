@@ -26,19 +26,19 @@ Journal.init(
     },
     userId: {
       type: DataTypes.UUID,
-      // allowNull: false,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       },
-    // journalId: {
-    //   type: DataTypes.INTEGER,
-    //   // allowNull: false,
-    //   references: {
-    //     model: 'journal',
-    //     key: 'id',
-    //   }
-    // }
+      // // journalId: {
+    //   //   type: DataTypes.UUID,
+    //   //   allowNull: false,
+    //   //   references: {
+      // //     model: 'journal',
+      // //     key: 'id',
+    //   //   },
+    //   // },
     },
   },
   {

@@ -21,7 +21,7 @@ Page.init(
     },
     journalId: {
       type: DataTypes.UUID,
-      // allowNull: false,
+      allowNull: false,
       references: {
         model: 'journal',
         key: 'id',
