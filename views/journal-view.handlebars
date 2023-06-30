@@ -1,13 +1,15 @@
 {{!-- DN Test --}}
 <div class="inline">
-<h1>Title {{title}}</h1>
-        <button class="btn btn-success btn-sm w-10 mt-4 p-3" data-id='{{this.id}}'>
+<h1>Title: {{journalData.title}}</h1>
+<h2>Description: {{journalData.content}}</h2>
+<h3>Created On: {{format_date journalData.date}}  </h3>
+        <button class="btn btn-success btn-sm w-10 mt-4 p-3" data-id='{{this.id}}' id="edit-journal-btn">
            Edit Journal Title and Description
         </button>
         <button class="btn btn-danger btn-sm w-10 mt-4 p-3" id="delete-journal-btn">
             Delete Journal
         </button>
-
+        <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" onclick="history.back()">Go Back</button>
 </div>
 
 <div>

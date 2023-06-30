@@ -41,11 +41,32 @@ renderCreateNewJournal: (req, res) => {
   })
 },
 
-viewJournalPages: (req, res) => {
+viewJournalPages: async (req, res) => {
   
-  res.render('journal-view', {
-    isAuthenticated: req.session.isAuthenticated,
-  })
+  // res.render('journal-view', {
+  //   isAuthenticated: req.session.isAuthenticated,
+  // })
+  const journalId = req.params.id; // Extract the journal ID from the URL parameters
+
+  try {
+    // Find the journal with the provided ID
+    const journal = await Journal.findByPk(journalId);
+
+    if (!journal) {
+      // Journal not found
+      return res.status(404).json({ error: 'Journal not found' });
+    }
+     const journalData = journal.get({plain: true})
+
+    res.render('journal-view', {
+      isAuthenticated: req.session.isAuthenticated,
+      journalData, // Pass the retrieved journal object to the template
+    });
+    console.log(journalData)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
   
 }
 
