@@ -42,9 +42,11 @@ renderCreateNewJournal: (req, res) => {
 },
 
 viewJournalPages: (req, res) => {
+  
   res.render('journal-view', {
     isAuthenticated: req.session.isAuthenticated,
   })
+  
 }
 
 

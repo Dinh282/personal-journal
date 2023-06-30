@@ -9,8 +9,8 @@ router.post('/login', UserController.login);
 router.post('/logout', isAuthenticated, UserController.logout);
 
 //DN//
-router.post('/journals', isAuthenticated, JournalController.createNewJournal);
-
+router.post('/journals/', isAuthenticated, JournalController.createNewJournal);
+router.delete('/journals/view/:id', isAuthenticated, JournalController.deleteJournal);
 //DN//
 
 
