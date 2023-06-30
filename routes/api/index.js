@@ -11,6 +11,7 @@ router.post('/logout', isAuthenticated, UserController.logout);
 //DN//
 router.post('/journals/', isAuthenticated, JournalController.createNewJournal);
 router.delete('/journals/view/:id', isAuthenticated, JournalController.deleteJournal);
+router.put('/journals/view/:id', isAuthenticated, JournalController.editJournal);//
 //DN//
 
 
