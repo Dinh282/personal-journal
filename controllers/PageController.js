@@ -1,5 +1,5 @@
 // const isAuthenticated = require("../middleware/isAuthenticated");
-const { Journal, User } = require('../models');
+const { Journal, User, Page } = require('../models');
 
 module.exports = {
   getDashboard: (req, res) => {
@@ -56,9 +56,19 @@ module.exports = {
       }
       const journalData = journal.get({ plain: true });
 
+      //TM
+      const pagesData = await Page.findAll({ where: { journalId } }); // Fetch all pages associated with the journal
+
+      const data = {
+        journal: journalData,
+        pages: pagesData,
+      };
+
+      console.log(data.pages);
+      //TM
       res.render('journal-view', {
         isAuthenticated: req.session.isAuthenticated,
-        journalData, // Pass the retrieved journal object to the template
+        data: data,
       });
       console.log(journalData);
     } catch (error) {

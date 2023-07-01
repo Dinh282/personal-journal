@@ -1,44 +1,55 @@
-{{!-- DN Test --}}
-<div class="inline">
-<h1>Title: {{journalData.title}}</h1>
-<h2>Description: {{journalData.content}}</h2>
-<h3>Created On: {{format_date journalData.date}}  </h3>
-        <button class="btn btn-success btn-sm w-10 mt-4 p-3" data-id='{{this.id}}' id="edit-journal-btn">
-           Edit Journal Title and Description
-        </button>
-        <button class="btn btn-danger btn-sm w-10 mt-4 p-3" id="delete-journal-btn">
-            Delete Journal
-        </button>
-        <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" onclick="history.back()">Go Back</button>
+{{! DN Test }}
+<div class='inline'>
+  <h1>Title: {{data.journal.title}}</h1>
+  <h2>Description: {{data.journal.content}}</h2>
+  <h3>Created On: {{format_date data.journal.date}} </h3>
+  <button
+    class='btn btn-success btn-sm w-10 mt-4 p-3'
+    data-id='{{this.id}}'
+    id='edit-journal-btn'
+  >
+    Edit Journal Title and Description
+  </button>
+  <button class='btn btn-danger btn-sm w-10 mt-4 p-3' id='delete-journal-btn'>
+    Delete Journal
+  </button>
+  <button
+    type='button'
+    class='btn btn-secondary btn-sm w-10 mt-4 p-3'
+    onclick='history.back()'
+  >Go Back</button>
 </div>
 
 <div>
-<div class="wrapper">
-  <div class="aspect">
-    <div class="aspect-inner">
-      <div class="flipbook" id="journal">
-        <div class="page"><h1>Title</h1></div>
+  <div class='wrapper'>
+    <div class='aspect'>
+      <div class='aspect-inner'>
+        <div class='flipbook' id='journal'>
+          <div class='page'><h1>{{data.journal.title}}</h1></div>
+          {{#each data.pages}}
+            <div class='page'>
+              <h1>{{this.title}}</h1>
+              <p>{{this.content}}</p>
+            </div>
+          {{/each}}
+
+          {{! <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
         <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
         <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
         <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
         <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> }}
+
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </div>
 
+{{! DN Test }}
+<script src='/js/pageTurnHandler.js'></script>
+<script src='/js/edit-delete-journal.js'></script>
+{{!  }}
 
-
-
-  {{!-- DN Test --}}
-  <script src="/js/pageTurnHandler.js"></script>
-  <script src="/js/edit-delete-journal.js"></script>
-  {{!--  --}}
-
-
-
-{{!-- DN Test --}}
+{{! DN Test }}

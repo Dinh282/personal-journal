@@ -32,15 +32,6 @@ Journal.init(
         key: 'id',
       },
       field: 'user_id',
-
-      // journalId: {
-      //   type: DataTypes.UUID,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'journal',
-      //     key: 'id',
-      //   },
-      // },
     },
   },
   {
