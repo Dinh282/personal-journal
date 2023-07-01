@@ -3,7 +3,7 @@ const { Journal } = require('../models');
 module.exports = {
     
     createNewJournal: async (req, res) => {
-
+      
       const {
         body: { title, content},
       } = req;
