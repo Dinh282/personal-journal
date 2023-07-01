@@ -40,7 +40,6 @@ Journal.init(
       //     key: 'id',
       //   },
       // },
-
     },
   },
   {

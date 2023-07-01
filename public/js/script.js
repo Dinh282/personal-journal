@@ -7,7 +7,6 @@ const showToast = ({ message }) => {
   const myToast = new bootstrap.Toast(toast, { autohide: true });
   myToast.show();
 };
-
 const showAlert = ({ target, message, type }) => {
   const alertContainer = document.querySelector(`#${target}`);
   const wrapper = document.createElement('div');
