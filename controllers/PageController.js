@@ -65,18 +65,17 @@ module.exports = {
         pages.push(page.get({ plain: true }));
       });
 
+      console.log(pagesData);
+
       const data = {
         journal: journalData,
         pages: pages,
       };
-
-      console.log(data.pages);
       //TM
       res.render('journal-view', {
         isAuthenticated: req.session.isAuthenticated,
         data: data,
       });
-      console.log(journalData);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });

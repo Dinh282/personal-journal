@@ -83,25 +83,22 @@ const seedDatabase = async () => {
         await Page.bulkCreate([
           {
             title: 'Page 1',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            content: 'page 1 content',
             journalId: journal.id,
           },
           {
             title: 'Page 2',
-            content:
-              'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            content: 'page 2 content',
             journalId: journal.id,
           },
           {
             title: 'Page 3',
-            content:
-              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            content: 'page 3 content',
             journalId: journal.id,
           },
           {
             title: 'Page 4',
-            content:
-              'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            content: 'page 4 content',
             journalId: journal.id,
           },
         ]);
