@@ -30,28 +30,22 @@
 
 
         {{#if pageData.length}}
-    {{#each pageData}}
-      
-        <div class="page" data-page-id="{{id}}">
-
-          <div>
-            <h1>Title:{{title}}</h1>
-            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Title</button>
-          </div>
-
-          <div>
-            <h2>Content:{{content}}</h2>
-            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Page</button>
-          </div>
-
-           <div>
-            <button type="button" class="btn btn-danger btn-sm w-5 p-3 del-page-btn"  onclick="">Delete Page</button>
-          </div>
-
-        </div>
-
-    {{/each}}
-
+  {{#each pageData}}
+    <div class="page" data-page-id="{{id}}">
+      <div>
+        <h1>Title:</h1>
+        <input type="text" class="title-input" value="{{title}}">
+      </div>
+      <div>
+        <h2>Content:</h2>
+        <textarea class="content-textarea">{{content}}</textarea>
+      </div>
+      <div>
+        <button type="button" class="btn btn-success btn-sm w-5 p-3 save-btn">Save Changes</button>
+        <button type="button" class="btn btn-danger btn-sm w-5 p-3 del-page-btn">Delete Page</button>
+      </div>
+    </div>
+  {{/each}}
 {{else}}
   <p class="text-2xl text-center pt-8 text-stone-600"></p>
 {{/if}}

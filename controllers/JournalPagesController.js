@@ -44,7 +44,36 @@ createNewJournalPage: async (req, res) => {
         console.error(err);
         res.status(500).json(err);
       }
-    }
+    },
+
+editJournalPage: async (req, res) => {
+    
+    try {
+
+        const pageId = req.params.id;
+        const { title, content } = req.body;
+        
+        // Find the page to be edited
+        const page = await Page.findByPk(pageId);
+        
+        if (!page) {
+          return res.status(404).json({ message: 'Page not found' });
+        }
+        
+        // Update the page with the new title and content
+        page.title = title;
+        page.content = content;
+        
+        // Save the changes to the database
+        await page.save();
+        
+        res.status(200).json({ message: 'Page edited successfully' });
+      } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+      }
+    },
+
 
 
 

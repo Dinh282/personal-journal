@@ -64,6 +64,46 @@ deleteButtons.forEach(button => {
     button.addEventListener('click', deleteJournalPageHandler);
 });
 
-    // document
-    // .querySelector('.del-page-btn')
-    // .addEventListener('click', deleteJournalPageHandler);
+
+
+
+const editJournalPageHandler = async event => {
+
+    const pageId = event.target.closest('.page').dataset.pageId;
+     // Get the updated title and content values from the input fields/textarea
+
+    const title = event.target.closest('.page').querySelector('.title-input').value;
+    const content = event.target.closest('.page').querySelector('.content-textarea').value;
+
+    
+    try {
+      // Send a PUT request to the server to delete the page
+      const response = await fetch(`/api/edit-journal-page/${pageId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ title, content }) // Pass the updated title and content in the request body
+      
+      });
+  
+      if (response.ok) {
+       
+        console.log('Page Edit successfully');
+        window.location.reload();
+      } else {
+        // Page edit failed
+        console.log('Failed to edit page');
+      }
+    } catch (error) {
+      // An error occurred during the fetch request
+      console.log('Error editing page:', error);
+    }
+
+}
+
+const editButtons = document.querySelectorAll('.save-btn');
+
+editButtons.forEach(button => {
+    button.addEventListener('click', editJournalPageHandler);
+});

@@ -14,6 +14,7 @@ router.delete('/journals/view/:id', isAuthenticated, JournalController.deleteJou
 router.put('/journals/view/:id', isAuthenticated, JournalController.editJournal);//
 router.post('/new-page/:id', isAuthenticated, JournalPagesController.createNewJournalPage);//
 router.delete('/delete-journal-page/:id', isAuthenticated, JournalPagesController.deleteJournalPage)//
+router.put('/edit-journal-page/:id', isAuthenticated, JournalPagesController.editJournalPage)//
 //DN//
 
 
