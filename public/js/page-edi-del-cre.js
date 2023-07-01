@@ -57,6 +57,13 @@ const newJournalPageHandler = async event => {
 
     }
 
-    document
-    .querySelector('#del-page-btn')
-    .addEventListener('click', deleteJournalPageHandler);
+
+const deleteButtons = document.querySelectorAll('.del-page-btn');
+    
+deleteButtons.forEach(button => {
+    button.addEventListener('click', deleteJournalPageHandler);
+});
+
+    // document
+    // .querySelector('.del-page-btn')
+    // .addEventListener('click', deleteJournalPageHandler);
