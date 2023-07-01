@@ -1,5 +1,5 @@
 // const isAuthenticated = require("../middleware/isAuthenticated");
-const { Journal, User } = require('../models');
+const { Journal, User, Page } = require('../models');
 
 module.exports = {
   getDashboard: (req, res) => {
@@ -42,10 +42,7 @@ renderCreateNewJournal: (req, res) => {
 },
 
 viewJournalPages: async (req, res) => {
-  
-  // res.render('journal-view', {
-  //   isAuthenticated: req.session.isAuthenticated,
-  // })
+
   const journalId = req.params.id; // Extract the journal ID from the URL parameters
 
   try {
@@ -56,19 +53,28 @@ viewJournalPages: async (req, res) => {
       // Journal not found
       return res.status(404).json({ error: 'Journal not found' });
     }
-     const journalData = journal.get({plain: true})
+
+    // Fetch the associated pages for the journal
+    const pages = await Page.findAll({ where: { journalId: journalId } });
+
+    const journalData = journal.get({ plain: true });
+    const pageData = pages.map(page => page.get({ plain: true }));
 
     res.render('journal-view', {
       isAuthenticated: req.session.isAuthenticated,
       journalData, // Pass the retrieved journal object to the template
+      pageData, // Pass the retrieved pages array to the template
     });
-    console.log(journalData)
+
+    // console.log(journalData);
+    // console.log(pageData);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 
-  
+
+
 }
 
 

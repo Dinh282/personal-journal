@@ -26,6 +26,36 @@
         <div class="page"></div>
         <div class="page">This Journal Belongs to:</div>
 
+
+
+
+        {{#if pageData.length}}
+    {{#each pageData}}
+      
+        <div class="page">
+
+          <div>
+            <h1>Page Title</h1>
+            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Title</button>
+          </div>
+
+          <div>
+            <h2>Page Content</h2>
+            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Page</button>
+          </div>
+
+        </div>
+
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="text-2xl text-center pt-8 text-stone-600"></p>
+{{/if}}
+
+
+
+
+
         <div class="page">
 
           <div>

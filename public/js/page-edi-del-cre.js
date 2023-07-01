@@ -15,7 +15,6 @@ const newJournalPageHandler = async event => {
 
           });
           
-
           if (response.ok) {
             location.reload()
           }
