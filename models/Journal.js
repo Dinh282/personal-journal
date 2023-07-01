@@ -31,6 +31,7 @@ Journal.init(
         model: 'user',
         key: 'id',
       },
+      field: 'user_id',
 
       // journalId: {
       //   type: DataTypes.UUID,
@@ -40,7 +41,6 @@ Journal.init(
       //     key: 'id',
       //   },
       // },
-
     },
   },
   {

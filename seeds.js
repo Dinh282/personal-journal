@@ -1,5 +1,6 @@
 const { User, Journal, Page } = require('./models');
 const sequelize = require('./db/config');
+const bcrypt = require('bcrypt');
 
 const tableExists = async tableName => {
   const query = `
@@ -39,25 +40,25 @@ const seedDatabase = async () => {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john.doe@example.com',
-        password: 'password1',
+        password: await bcrypt.hash('password1', 10),
       },
       {
         firstName: 'Jane',
         lastName: 'Smith',
         email: 'jane.smith@example.com',
-        password: 'password2',
+        password: await bcrypt.hash('password2', 10),
       },
       {
         firstName: 'Michael',
         lastName: 'Johnson',
         email: 'michael.johnson@example.com',
-        password: 'password3',
+        password: await bcrypt.hash('password3', 10),
       },
       {
         firstName: 'Emily',
         lastName: 'Davis',
         email: 'emily.davis@example.com',
-        password: 'password4',
+        password: await bcrypt.hash('password4', 10),
       },
     ]);
 
