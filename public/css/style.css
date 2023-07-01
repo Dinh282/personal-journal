@@ -4,7 +4,7 @@ body {
 }
 
 .logo-sm {
-  width: 100px;
+  width: 75px;
   height: 60px;
   margin-right: 5px;
 }
@@ -14,12 +14,6 @@ body {
   border: none;
   cursor: pointer;
 } */
-
-#register-logo {
-  width: 10rem;
-  height: 10rem;
-  display: flex;
-}
 
 .btn-outline-success {
   margin: 4px;
