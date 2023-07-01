@@ -2,7 +2,6 @@ const { Journal, User, Page } = require('../models');
 
 module.exports = {
 createNewJournalPage: async (req, res) => {
-            console.log("here", req.params)
           try {
             const journalId = req.params.id;
 
@@ -24,5 +23,31 @@ createNewJournalPage: async (req, res) => {
           }
         },
      
+
+ deleteJournalPage: async (req, res) => {
+    try {
+
+        const pageId = req.params.id;
+        
+        // Find the page to delete
+        const page = await Page.findByPk(pageId);
+  
+        if (!page) {
+          return res.status(404).json({ message: 'Page not found' });
+        }
+  
+        // Delete the page
+        await page.destroy();
+  
+        res.status(200).json({ message: 'Page deleted successfully' });
+      } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+      }
+    }
+
+
+
+
 
 };

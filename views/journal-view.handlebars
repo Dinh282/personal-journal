@@ -32,7 +32,7 @@
         {{#if pageData.length}}
     {{#each pageData}}
       
-        <div class="page">
+        <div class="page" data-page-id="{{id}}">
 
           <div>
             <h1>Title:{{title}}</h1>
@@ -42,6 +42,10 @@
           <div>
             <h2>Content:{{content}}</h2>
             <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Page</button>
+          </div>
+
+           <div>
+            <button type="button" class="btn btn-danger btn-sm w-5 p-3" id='del-page-btn' onclick="">Delete Page</button>
           </div>
 
         </div>
