@@ -59,9 +59,15 @@ module.exports = {
       //TM
       const pagesData = await Page.findAll({ where: { journalId } }); // Fetch all pages associated with the journal
 
+      const pages = [];
+
+      pagesData.forEach(page => {
+        pages.push(page.get({ plain: true }));
+      });
+
       const data = {
         journal: journalData,
-        pages: pagesData,
+        pages: pages,
       };
 
       console.log(data.pages);
