@@ -15,6 +15,12 @@ body {
   cursor: pointer;
 } */
 
+#register-logo {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+}
+
 .btn-outline-success {
   margin: 4px;
   padding: 0px;
