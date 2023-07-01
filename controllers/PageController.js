@@ -21,7 +21,6 @@ getJournals: async (req, res) => {
     const journals = dbJournalData.map((journal) => 
     journal.get({ plain: true }));
 
-    console.log("here", journals);
     
     res.render('journals', {
       journalPageMessage: 'User Created Journals To Be Rendered Here',
@@ -59,6 +58,9 @@ viewJournalPages: async (req, res) => {
 
     const journalData = journal.get({ plain: true });
     const pageData = pages.map(page => page.get({ plain: true }));
+
+    console.log("journalData>>>", journalData)
+    console.log("pageData>>>", pageData)
 
     res.render('journal-view', {
       isAuthenticated: req.session.isAuthenticated,
