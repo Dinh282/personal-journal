@@ -17,6 +17,7 @@
 <div class="wrapper">
   <div class="aspect">
     <div class="aspect-inner">
+
       <div class="book" id="journal">
         <div class="cover" id="editable"><h1>{{journalData.title}}</h1>
                                 <h2>Description: {{journalData.content}}</h2>
@@ -75,6 +76,16 @@
         <div class="page"></div>
         {{!-- <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> --}}
         <div class="cover"></div>
+
+      <div class="flipbook" id="journal">
+        <div class="page"><h1>Title</h1></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+
       </div>
     </div>
   </div>
@@ -89,6 +100,7 @@
   <script src="/js/pageTurnHandler.js"></script>
   <script src="/js/edit-delete-journal.js"></script>
   <script src="/js/page-edi-del-cre.js"></script>
+
   {{!--  --}}
 
 
