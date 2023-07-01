@@ -3,6 +3,10 @@ body {
   overflow: hidden;
 }
 
+*{
+  font-family: Chicago;
+}
+
 .logo-sm {
   width: 75px;
   height: 60px;
