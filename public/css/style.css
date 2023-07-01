@@ -9,6 +9,11 @@ body {
   margin-right: 5px;
 }
 
+#journal-list {
+  display: table;
+  margin: 0 auto;
+}
+
 /* .nav-btn {
   background: none !important;
   border: none;

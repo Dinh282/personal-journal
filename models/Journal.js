@@ -31,14 +31,14 @@ Journal.init(
         model: 'user',
         key: 'id',
       },
-    journalId: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      references: {
-        model: 'journal',
-        key: 'id',
-      }
-    }
+      journalId: {
+        type: DataTypes.INTEGER,
+        // allowNull: false,
+        references: {
+          model: 'journal',
+          key: 'id',
+        },
+      },
     },
   },
   {

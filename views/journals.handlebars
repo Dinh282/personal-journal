@@ -8,28 +8,31 @@
      requesting for the list of available journals data so that we can inject it into the template(journals.handlebars).
 </p>
 
-<button class="btn btn-primary btn-lg w-50 mt-4 p-3">
+<div class="text-center">
+<button class="btn btn-primary btn-lg w-25 mt-4 p-3">
   <a href="/journals/new" style="color: inherit; text-decoration: none;">
     Create New Journal
   </a>
 </button>
+</div>
 
 
 {{#if journals.length}}
-  <ul class="space-y-4 py-3 px-4">
+  <ul id="journal-list">
     {{#each journals}}
       <li>
-        <a href="/journals/view/{{this.id}}" class="btn flex items-center justify-between">
-          <span class="mr-2">{{this.title}}</span>
-          <span class="mr-2">{{this.content}}</span>
-          <span class="text-sm">{{format_date createdAt}}</span>
+        <a href="/journals/view/{{this.id}}" class="btn d-flex items-center justify-between">
+          <span class="m-2 fw-bold">{{this.title}}</span>
+          <span class="m-2 fw-light">{{this.content}}</span>
+          <span class="text-sm m-2 fw-light">{{format_date createdAt}}</span>
         </a>
-       
-
       </li>
+    
+
+      
     {{/each}}
   </ul>
 {{else}}
-  <p class="text-2xl text-center pt-8 text-stone-600">You haven't created any Journals yet. Click the Create New Journal button to start one.</p>
+  <h5 class="text-2xl text-center pt-8 text-stone-600">You haven't created any Journals yet. Click the Create New Journal button to start one.</h5>
 {{/if}}
 
