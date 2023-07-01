@@ -48,7 +48,7 @@ module.exports = {
 
     editJournal: async (req, res) => {
       const { id } = req.params;
-      const { title, description } = req.body;
+      const { title, content } = req.body;
     
       try {
         // Find the journal with the provided ID
@@ -60,11 +60,11 @@ module.exports = {
     
         // Update the journal data
         journal.title = title;
-        journal.description = description;
+        journal.content = content;
     
         // Save the updated journal
         await journal.save();
-    
+      
         // Send a success response
         res.status(200).json({ message: 'Journal edited successfully' });
       } catch (err) {
