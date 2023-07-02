@@ -4,7 +4,7 @@ const { Journal, User, Page } = require('../models');
 module.exports = {
   getDashboard: (req, res) => {
     res.render('dashboard', {
-      welcomeMessage: `Welcome to the Dashboard ${req.session.currentUser.firstName}!`,
+      welcomeMessage: `Welcome to Pages of your Mind, ${req.session.currentUser.firstName} ${req.session.currentUser.lastName}!`,
       isAuthenticated: req.session.isAuthenticated,
     });
   },

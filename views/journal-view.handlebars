@@ -1,39 +1,70 @@
 {{!-- DN Test --}}
-<div class="inline text-center">
+{{!-- <div class="inline text-center">
 <h1 class="text-center">Title: {{journalData.title}}</h1>
 <h2 class="text-center"> Description: {{journalData.content}}</h2>
-<h3 class="text-center"> Created On: {{format_date journalData.date}}</h3>
-        <button class="btn btn-success btn-sm w-10 mt-4 p-3" data-id='{{this.id}}' id="edit-journal-btn">
+<h3 class="text-center"> Created On: {{format_date journalData.date}}</h3> --}}
+        {{!-- <button class="btn btn-success btn-sm w-10 mt-4 p-3" data-id='{{this.id}}' id="edit-journal-btn">
            Edit Journal Title and Description
-        </button>
-        <button class="btn btn-danger btn-sm w-10 mt-4 p-3" id="delete-journal-btn">
+        </button> --}}
+        {{!-- <button class="btn btn-danger btn-sm w-10 mt-4 p-3">
             Delete Journal
-        </button>
+        </button> --}}
+
         <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" onclick="history.back()">Go Back</button>
         <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" id='add-new-page' >Add Page</button>
-</div>
+{{!-- </div> --}}
 
-<div>
-<div class="wrapper">
+<div class="">
+<div class="wrapper ">
   <div class="aspect">
     <div class="aspect-inner">
-      <div class="book" id="journal">
+      <div class="book animated " id="journal">
         <div class="cover" id="editable">
-          <h1>{{journalData.title}}</h1>
-          <h2>Description: {{journalData.content}}</h2>
-                <h3>Created On: {{format_date journalData.date}}</h3>
+          <div class="text-center mt-4">
+          {{!-- <h1>{{journalData.title}}</h1>
+          <h2>{{journalData.content}}</h2> --}}
+
+         <h1 class="text-center"> {{#if journalData.title}}
+            <span id="editableJournalTitle" class="editable-text" data-field="title">{{journalData.title}}</span>
+          {{else}}
+            <span id="editableJournalTitle" class="editable-text" data-field="title">Enter A Journal Title</span>
+          {{/if}}</h1>
+
+    <h3>{{#if journalData.content}}
+            <span id="editableJournalContent" class="editable-text" data-field="content">{{journalData.content}}</span>
+          {{else}}
+            <span id="editableJournalContent" class="editable-text" data-field="content">Enter a Journal Description?</span>
+          {{/if}}</h3>
+
+
+
+          <p>Created On: {{format_date journalData.date}}</p>
+          <div class="icons-container position-absolute bottom-0 start-50 translate-middle-x mb-2">
+             <button type="button" class="btn btn-success btn-sm" id="save-button">
+              <i  class="bi bi-save2"></i> 
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" id="delete-journal-btn">
+              <i class="bi bi-trash"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
+            </button>
+         </div>
+          </div>
+        </div>
+
+
+        <div class="page"></div>
+        <div class="page">This Journal Belongs to:
+
+
 
         </div>
-        <div class="page"></div>
-        <div class="page">This Journal Belongs to:</div>
 
 
 
 
         {{#if pageData.length}}
   {{#each pageData}}
-    <div class="page position-relative" data-page-id="{{id}}">
-      <div p-4>
+    <div class="page" data-page-id="{{id}}">
+      <div class="">
         <h1 class="text-center"> {{#if title}}
             <span id="editableTitle" class="editable-text" data-field="title">{{title}}</span>
           {{else}}
@@ -42,7 +73,7 @@
         {{!-- <input type="text" class="title-input" value="{{title}}"> --}}
       </div>
       <div class="line"></div>
-      <div>
+      <div class="m-4">
         <p>{{#if content}}
             <span id="editableContent" class="editable-text" data-field="content">{{content}}</span>
           {{else}}
@@ -51,17 +82,13 @@
         {{!-- <textarea class="content-textarea">{{content}}</textarea> --}}
       </div>
       
-      {{!-- <div>
-        <button type="button" class="btn btn-success btn-sm w-5 p-3 save-btn">Save Changes</button>
-        <button type="button" class="btn btn-danger btn-sm w-5 p-3 del-page-btn">Delete Page</button>
-      </div> --}}
 
   <div class="icons-container position-absolute bottom-0 start-50 translate-middle-x mb-2">
     <button type="button" class="btn btn-success btn-sm save-btn">
-      <i class="bi bi-check"></i> <!-- Replace "fa-save" with the appropriate save icon class -->
+      <i class="bi bi-save2"></i> 
     </button>
     <button type="button" class="btn btn-danger btn-sm del-page-btn">
-      <i class="bi bi-trash"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
+      <i class="bi bi-trash"></i> 
     </button>
   </div>
 
@@ -72,29 +99,9 @@
   <p class="text-2xl text-center pt-8 text-stone-600"></p>
 {{/if}}
 
-
-
-
-
-        <div class="page">
-
-          <div>
-            <h1>Page Title</h1>
-            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Title</button>
-          </div>
-
-          <div>
-            <h2>Page Content</h2>
-            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Page</button>
-          </div>
-
-        </div>
-
-
-
         <div class="page"></div>
         <div class="page"></div>
-        <div class="page"></div>
+        <div class="page">End</div>
         {{!-- <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> --}}
         <div class="cover"></div>
       </div>
@@ -103,6 +110,8 @@
 </div>
 
 </div>
+
+
 
 //we can use charmonman font for the users journal entries. it is a nice cursive
 

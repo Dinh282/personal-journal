@@ -181,3 +181,38 @@ body{
 }
 
 /*  */
+
+
+/* For Page save icon */
+.show-text .bi-save2 {
+  display: none;
+}
+
+.show-text::after {
+  content: "Changes saved!";
+  display: inline-block;
+  margin-left: 0.5em;
+}
+
+.hide-icon {
+  display: none;
+}
+
+
+.blink {
+  animation: blink-animation 0.8s infinite;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*  */

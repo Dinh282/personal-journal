@@ -1,3 +1,6 @@
+// import { createPopper } from '@popperjs/core';
+
+
 const newJournalPageHandler = async event => {
     event.preventDefault();
 
@@ -87,7 +90,22 @@ const editJournalPageHandler = async event => {
 
     if (response.ok) {
       console.log('Page edited successfully');
-      window.location.reload();
+      // window.location.reload();
+      // Add blinking effect and display message
+      const saveButton = event.target;
+      saveButton.disabled = true;
+      const blinkInterval = setInterval(() => {
+        saveButton.classList.toggle('blink');
+      }, 500);
+      saveButton.textContent = ' Edits Saved!';
+      
+      setTimeout(() => {
+        clearInterval(blinkInterval);
+        saveButton.classList.remove('blink');
+        saveButton.disabled = false;
+        saveButton.textContent = '     ';
+      }, 2000);
+
     } else {
       console.log('Failed to edit page');
     }
