@@ -164,3 +164,20 @@ body{
 	background-image:-o-linear-gradient(right, #FFF 95%, #ddd 100%);
 	background-image:-ms-linear-gradient(right, #FFF 95%, #ddd 100%);
 }
+
+
+
+/* For Journal Page Editbale-Text Area */
+
+.editable-text {
+  cursor: pointer;
+  color: blue;
+}
+
+.line {
+  height: 2px;
+  background-color: #000;
+  margin: 10px;
+}
+
+/*  */

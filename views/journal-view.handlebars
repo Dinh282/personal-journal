@@ -18,9 +18,10 @@
   <div class="aspect">
     <div class="aspect-inner">
       <div class="book" id="journal">
-        <div class="cover" id="editable"><h1>{{journalData.title}}</h1>
-                                <h2>Description: {{journalData.content}}</h2>
-                                <h3>Created On: {{format_date journalData.date}}</h3>
+        <div class="cover" id="editable">
+          <h1>{{journalData.title}}</h1>
+          <h2>Description: {{journalData.content}}</h2>
+                <h3>Created On: {{format_date journalData.date}}</h3>
 
         </div>
         <div class="page"></div>
@@ -31,19 +32,40 @@
 
         {{#if pageData.length}}
   {{#each pageData}}
-    <div class="page" data-page-id="{{id}}">
-      <div>
-        <h1>Title:</h1>
-        <input type="text" class="title-input" value="{{title}}">
+    <div class="page position-relative" data-page-id="{{id}}">
+      <div p-4>
+        <h1 class="text-center"> {{#if title}}
+            <span id="editableTitle" class="editable-text" data-field="title">{{title}}</span>
+          {{else}}
+            <span id="editableTitle" class="editable-text" data-field="title">Enter A Title</span>
+          {{/if}}</h1>
+        {{!-- <input type="text" class="title-input" value="{{title}}"> --}}
       </div>
+      <div class="line"></div>
       <div>
-        <h2>Content:</h2>
-        <textarea class="content-textarea">{{content}}</textarea>
+        <p>{{#if content}}
+            <span id="editableContent" class="editable-text" data-field="content">{{content}}</span>
+          {{else}}
+            <span id="editableContent" class="editable-text" data-field="content">What's on your mind?</span>
+          {{/if}}</p>
+        {{!-- <textarea class="content-textarea">{{content}}</textarea> --}}
       </div>
-      <div>
+      
+      {{!-- <div>
         <button type="button" class="btn btn-success btn-sm w-5 p-3 save-btn">Save Changes</button>
         <button type="button" class="btn btn-danger btn-sm w-5 p-3 del-page-btn">Delete Page</button>
-      </div>
+      </div> --}}
+
+  <div class="icons-container position-absolute bottom-0 start-50 translate-middle-x mb-2">
+    <button type="button" class="btn btn-success btn-sm save-btn">
+      <i class="bi bi-check"></i> <!-- Replace "fa-save" with the appropriate save icon class -->
+    </button>
+    <button type="button" class="btn btn-danger btn-sm del-page-btn">
+      <i class="bi bi-trash"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
+    </button>
+  </div>
+
+
     </div>
   {{/each}}
 {{else}}

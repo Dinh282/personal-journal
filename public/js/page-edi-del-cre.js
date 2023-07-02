@@ -68,42 +68,62 @@ deleteButtons.forEach(button => {
 
 
 const editJournalPageHandler = async event => {
-
-    const pageId = event.target.closest('.page').dataset.pageId;
-     // Get the updated title and content values from the input fields/textarea
-
-    const title = event.target.closest('.page').querySelector('.title-input').value;
-    const content = event.target.closest('.page').querySelector('.content-textarea').value;
-
-    
-    try {
-      // Send a PUT request to the server to delete the page
-      const response = await fetch(`/api/edit-journal-page/${pageId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ title, content }) // Pass the updated title and content in the request body
-      
-      });
+  const pageId = event.target.closest('.page').dataset.pageId;
   
-      if (response.ok) {
-       
-        console.log('Page Edit successfully');
-        window.location.reload();
-      } else {
-        // Page edit failed
-        console.log('Failed to edit page');
-      }
-    } catch (error) {
-      // An error occurred during the fetch request
-      console.log('Error editing page:', error);
-    }
+  // Get the updated title and content values from the elements
+  const title = event.target.closest('.page').querySelector('h1 span').textContent;
+  const contentElement = event.target.closest('.page').querySelector('p span');
+  const content = contentElement ? contentElement.textContent : '';
 
-}
+  try {
+    // Send a PUT request to the server to update the page
+    const response = await fetch(`/api/edit-journal-page/${pageId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, content })
+    });
+
+    if (response.ok) {
+      console.log('Page edited successfully');
+      window.location.reload();
+    } else {
+      console.log('Failed to edit page');
+    }
+  } catch (error) {
+    console.log('Error editing page:', error);
+  }
+};
 
 const editButtons = document.querySelectorAll('.save-btn');
 
 editButtons.forEach(button => {
-    button.addEventListener('click', editJournalPageHandler);
+  button.addEventListener('click', editJournalPageHandler);
+});
+
+
+
+
+
+//For editable text event of title and content of journal page
+document.addEventListener('click', function (event) {
+  const editableText = event.target.closest('.editable-text');
+  if (editableText) {
+    const input = document.createElement('input');
+    input.value = editableText.textContent;
+    editableText.replaceWith(input);
+    input.focus();
+
+    input.addEventListener('blur', function () {
+      const newText = input.value;
+      const newSpan = document.createElement('span');
+      newSpan.className = 'editable-text';
+      newSpan.textContent = newText;
+
+        input.parentNode.replaceChild(newSpan, input);
+    
+
+    });
+  }
 });
