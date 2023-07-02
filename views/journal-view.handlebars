@@ -10,20 +10,71 @@
             Delete Journal
         </button>
         <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" onclick="history.back()">Go Back</button>
+        <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" id='add-new-page' >Add Page</button>
 </div>
 
 <div>
 <div class="wrapper">
   <div class="aspect">
     <div class="aspect-inner">
-      <div class="flipbook" id="journal">
-        <div class="page"><h1>Title</h1></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
-        <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div>
+      <div class="book" id="journal">
+        <div class="cover" id="editable"><h1>{{journalData.title}}</h1>
+                                <h2>Description: {{journalData.content}}</h2>
+                                <h3>Created On: {{format_date journalData.date}}</h3>
+
+        </div>
+        <div class="page"></div>
+        <div class="page">This Journal Belongs to:</div>
+
+
+
+
+        {{#if pageData.length}}
+  {{#each pageData}}
+    <div class="page" data-page-id="{{id}}">
+      <div>
+        <h1>Title:</h1>
+        <input type="text" class="title-input" value="{{title}}">
+      </div>
+      <div>
+        <h2>Content:</h2>
+        <textarea class="content-textarea">{{content}}</textarea>
+      </div>
+      <div>
+        <button type="button" class="btn btn-success btn-sm w-5 p-3 save-btn">Save Changes</button>
+        <button type="button" class="btn btn-danger btn-sm w-5 p-3 del-page-btn">Delete Page</button>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <p class="text-2xl text-center pt-8 text-stone-600"></p>
+{{/if}}
+
+
+
+
+
+        <div class="page">
+
+          <div>
+            <h1>Page Title</h1>
+            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Title</button>
+          </div>
+
+          <div>
+            <h2>Page Content</h2>
+            <button type="button" class="btn btn-success btn-sm w-5 p-3" onclick="">Edit Page</button>
+          </div>
+
+        </div>
+
+
+
+        <div class="page"></div>
+        <div class="page"></div>
+        <div class="page"></div>
+        {{!-- <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> --}}
+        <div class="cover"></div>
       </div>
     </div>
   </div>
@@ -37,6 +88,7 @@
   {{!-- DN Test --}}
   <script src="/js/pageTurnHandler.js"></script>
   <script src="/js/edit-delete-journal.js"></script>
+  <script src="/js/page-edi-del-cre.js"></script>
   {{!--  --}}
 
 
