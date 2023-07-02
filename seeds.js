@@ -1,5 +1,6 @@
 const { User, Journal, Page } = require('./models');
 const sequelize = require('./db/config');
+const bcrypt = require('bcrypt');
 
 const tableExists = async tableName => {
   const query = `
@@ -39,25 +40,25 @@ const seedDatabase = async () => {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john.doe@example.com',
-        password: 'password1',
+        password: await bcrypt.hash('password1', 10),
       },
       {
         firstName: 'Jane',
         lastName: 'Smith',
         email: 'jane.smith@example.com',
-        password: 'password2',
+        password: await bcrypt.hash('password2', 10),
       },
       {
         firstName: 'Michael',
         lastName: 'Johnson',
         email: 'michael.johnson@example.com',
-        password: 'password3',
+        password: await bcrypt.hash('password3', 10),
       },
       {
         firstName: 'Emily',
         lastName: 'Davis',
         email: 'emily.davis@example.com',
-        password: 'password4',
+        password: await bcrypt.hash('password4', 10),
       },
     ]);
 
@@ -81,26 +82,27 @@ const seedDatabase = async () => {
       for (const journal of journals) {
         await Page.bulkCreate([
           {
-            title: 'Page 1',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            title: 'Sea Legs Yellow Jack rum',
+            content:
+              'Heave to ballast tack gaff ho American Main run a rig transom topgallant landlubber or just lubber. Weigh anchor transom galleon yardarm hempen halter mutiny cable furl Chain Shot lugsail. Nelsons folly Plate Fleet loaded to the gunwalls broadside fore code of conduct parrel splice the main brace case shot quarterdeck.',
             journalId: journal.id,
           },
           {
-            title: 'Page 2',
+            title: 'Pink bilge keelhaul line',
             content:
-              'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              'Mutiny jolly boat nipperkin Buccaneer rigging chase spyglass plunder Nelsons folly wench. Spanker mutiny landlubber or just lubber coffer crack Jennys tea cup jib skysail spirits run a rig pillage. Parley run a rig tender topsail case shot sutler sheet carouser crows nest smartly.',
             journalId: journal.id,
           },
           {
-            title: 'Page 3',
+            title: 'Lookout clap of thunder load',
             content:
-              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+              'Jack Davy Jones Locker heave to bilge tackle parley pirate aft hogshead mizzenmast. Gangplank Cat o-nine tails mizzenmast gabion spyglass swab gun ropes end case shot lass. Run a rig tender clap of thunder ballast topgallant sutler gangplank grog blossom hempen halter driver.',
             journalId: journal.id,
           },
           {
-            title: 'Page 4',
+            title: 'Flogging scurvy lookout',
             content:
-              'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+              'Arr quarterdeck avast Jack Ketch barkadeer Letter of Marque starboard lugger salmagundi aye. Clipper code of conduct ho black spot long clothes league Privateer barkadeer sloop nipper. Rum dance the hempen jig long clothes hardtack splice the main brace wherry lugger pirate keel strike colors.',
             journalId: journal.id,
           },
         ]);
