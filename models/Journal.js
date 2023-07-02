@@ -13,11 +13,11 @@ Journal.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     content: {
       type: DataTypes.STRING(5000),
-      allowNull: false,
+      allowNull: true,
     },
     date: {
       type: DataTypes.DATE,
@@ -31,7 +31,6 @@ Journal.init(
         model: 'user',
         key: 'id',
       },
-      field: 'user_id',
     },
   },
   {
