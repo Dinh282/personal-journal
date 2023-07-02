@@ -16,7 +16,7 @@ Journal.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(5000),
       allowNull: false,
     },
     date: {
@@ -31,6 +31,7 @@ Journal.init(
         model: 'user',
         key: 'id',
       },
+      field: 'user_id',
     },
   },
   {
