@@ -1,0 +1,230 @@
+/* * {
+  font-family: Chicago;
+}
+
+@font-face {
+  font-family: Chicago;
+  src: url(../fonts/Chicago.otf);
+} */
+
+/* GLOBAL STYLES */
+:root {
+  --primary-color: rgb(41, 41, 41);
+  --secondary-color: rgb(236, 143, 0);
+  --alt-red: rgb(129, 0, 0);
+  --alt-green: rgb(0, 41, 7);
+  --dark: rgb(41, 41, 41);
+  --light: rgb(255, 255, 255);
+  --box: rgba(0, 0, 0, 0.24);
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1483546363825-7ebf25fb7513?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* HERO STYLES */
+.p2-hero {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow: var(--box);
+}
+
+@media (min-width: 574px) {
+  .p2-hero {
+    margin: 0 10vw;
+  }
+}
+
+/* NAV STYLES */
+nav {
+  background-color: var(--primary-color);
+  box-shadow: rgba(0, 0, 0, 0.24);
+}
+
+#nav-login,
+#nav-dashboard {
+  border-color: var(--secondary-color);
+}
+
+#nav-signup,
+#logout {
+  border-color: var(--alt-green);
+}
+
+#nav-login:hover,
+#nav-dashboard:hover {
+  background-color: var(--secondary-color);
+}
+
+#nav-signup:hover,
+#logout:hover {
+  background-color: var(--alt-green);
+}
+
+#nav-signup .nav-signup,
+#nav-login .nav-login,
+#logout,
+#nav-dashboard .nav-link {
+  color: white;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+/* .logo-sm {
+  border-radius: 50%;
+} */
+
+.logo-sm {
+  width: 75px;
+  height: 60px;
+  margin-right: 5px;
+}
+
+#journal-list {
+  display: table;
+  margin: 0 auto;
+}
+
+/* .nav-btn {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+} */
+
+.btn-outline-success {
+  margin: 4px;
+  padding: 0px;
+}
+
+#logout {
+  padding: 8px;
+}
+
+/* DN  FlipBook*/
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  height: 90%;
+  justify-content: center;
+  margin: 5%;
+  width: 90%;
+}
+
+.aspect {
+  padding-bottom: 70vh;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* TM */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aspect-inner {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* TM */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flipbook {
+  height: 100%;
+  transition: margin-left 0.25s ease-out;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.flipbook .page {
+  height: 100%;
+  width: 100%;
+}
+
+.flipbook .page img {
+  max-width: 100%;
+  height: 100%;
+}
+
+/* DN */
+
+/* Below is css for applying a book style look to our journal */
+
+.book {
+  width: 800px;
+  height: 500px;
+}
+
+.book .turn-page {
+  background-color: white;
+}
+
+.book .cover {
+  background: #333;
+}
+
+.book .cover h1 {
+  color: brown;
+  text-align: center;
+  font-size: 50px;
+  line-height: 50px;
+  margin: 0px;
+}
+
+.book .loader {
+  background-image: url(loader.gif);
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: 238px;
+  left: 188px;
+}
+
+.book .data {
+  text-align: center;
+  font-size: 40px;
+  color: #999;
+  line-height: 500px;
+}
+
+#controls {
+  width: 800px;
+  text-align: center;
+  margin: 20px 0px;
+  font: 30px arial;
+}
+
+#controls input,
+#controls label {
+  font: 30px arial;
+}
+
+.book .odd {
+  background-image: -webkit-linear-gradient(left, #fff 95%, #ddd 100%);
+  background-image: -moz-linear-gradient(left, #fff 95%, #ddd 100%);
+  background-image: -o-linear-gradient(left, #fff 95%, #ddd 100%);
+  background-image: -ms-linear-gradient(left, #fff 95%, #ddd 100%);
+}
+
+.book .even {
+  background-image: -webkit-linear-gradient(right, #fff 95%, #ddd 100%);
+  background-image: -moz-linear-gradient(right, #fff 95%, #ddd 100%);
+  background-image: -o-linear-gradient(right, #fff 95%, #ddd 100%);
+  background-image: -ms-linear-gradient(right, #fff 95%, #ddd 100%);
+}
