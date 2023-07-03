@@ -26,7 +26,7 @@ Page.init(
         model: 'journal',
         key: 'id',
       },
-      // field: 'user_id',
+      field: 'user_id',
     },
   },
   {
