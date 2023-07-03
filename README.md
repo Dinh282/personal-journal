@@ -27,14 +27,14 @@ Here is a list of our motivations for this project!
 
 ## Deployed Application
 
-[Click here to go to the Personal Journal github repository!](https://github.com/Dinh282/personal-journal)
+[Click here to go to the Personal Journal Heroku application!](https://personal-journal-e23df6a117fd.herokuapp.com/)
 
 ## Screenshots
 
 
 ## Contributors
 
-- Dinh Nguyen - erik.r.benedict@gmail.com
+- Dinh Nguyen - nguyen_dinh282@yahoo.com
   <br/>
 - Thomas Rose-Meyer - dmschopler@gmail.com
   <br/>
