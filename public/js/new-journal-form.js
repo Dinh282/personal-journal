@@ -24,7 +24,7 @@ const newJournalFormHandler = async event => {
 
 
    document
-    .querySelector('.new-journal-form')
+    .querySelector('#new-journal-form')
     .addEventListener('submit', newJournalFormHandler);
 
 

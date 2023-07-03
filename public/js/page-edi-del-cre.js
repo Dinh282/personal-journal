@@ -24,12 +24,15 @@ const newJournalPageHandler = async event => {
         } catch (error) {
           console.error(error);
         }
+      }
 
-}
+const addNewPageButtons = document.querySelectorAll('.add-new-page');
 
-   document
-    .querySelector('#add-new-page')
-    .addEventListener('click', newJournalPageHandler);
+addNewPageButtons.forEach(button => {
+  button.addEventListener('click', newJournalPageHandler);
+});
+
+
 
 
     const deleteJournalPageHandler = async event => {

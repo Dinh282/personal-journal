@@ -10,8 +10,8 @@
             Delete Journal
         </button> --}}
 
-        <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" onclick="history.back()">Go Back</button>
-        <button type="button" class="btn btn-secondary btn-sm w-10 mt-4 p-3" id='add-new-page' >Add Page</button>
+        <button type="button" class="btn btn-primary btn-sm w-10 mt-4 p-3" onclick="history.back()"> <span style="font-size: 1.2rem;">&#8592; Go Back</span></button>
+        <button type="button" class="btn btn-primary btn-sm w-10 mt-4 p-3 add-new-page" id='' ><span style="font-size: 1.2rem;">Add Page</span></button>
 {{!-- </div> --}}
 
 <div class="container-fluid">
@@ -45,17 +45,15 @@
             <button type="button" class="btn btn-danger btn-sm" id="delete-journal-btn">
               <i class="bi bi-trash"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
             </button>
+            <button type="button" class="btn btn-primary btn-sm add-new-page" id="">
+              <i class="bi bi-plus"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
+            </button>
          </div>
           </div>
         </div>
 
 
         <div class="page"></div>
-        <div class="page">This Journal Belongs to:
-
-
-
-        </div>
 
 
 
@@ -89,6 +87,9 @@
     <button type="button" class="btn btn-danger btn-sm del-page-btn">
       <i class="bi bi-trash"></i> 
     </button>
+     <button type="button" class="btn btn-primary btn-sm add-new-page" id="">
+      <i class="bi bi-plus"></i> <!-- Replace "fa-trash-alt" with the appropriate trashcan icon class -->
+    </button>
   </div>
 
 
@@ -100,7 +101,7 @@
 
         <div class="page"></div>
         <div class="page"></div>
-        <div class="page">End</div>
+        <div class="page"></div>
         {{!-- <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> --}}
         <div class="cover"></div>
       </div>

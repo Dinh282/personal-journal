@@ -1,13 +1,4 @@
-
-<p class="text-center mt-3 mb-0">This page will render a form that has a Title: followed by a 
-    textarea for the user to input a title. Below should have a title Description: followed by 
-    another textarea for the user to put in a brief note/description of what this to be created
-    jounral will be about. Form should have submit button at the bottom. HTML code for this form 
-    goes into new-journal.handlebars file. We should link the form to either the script.js file 
-    or a new file on its own with the code to handle creating a new journal with the users entered 
-    data and saving it into the database.
-</p>
-
+{{!-- 
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
@@ -31,6 +22,42 @@
         <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 p-3">Submit</button>
         <button type="button" class="btn btn-secondary btn-lg w-100 mt-4 p-3" onclick="history.back()">Cancel</button>
       </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/new-journal-form.js"></script> --}}
+
+
+<!-- Button to trigger the modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+  Open Modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">New Journal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-journal-form" class="shadow p-4 bg-body rounded requires-validation" novalidate>
+          <div class="mb-3">
+            <label for="journal-title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="journal-title" required>
+            <div class="invalid-feedback">Please enter a title for your Journal</div>
+          </div>
+          <div class="mb-3">
+            <label for="journal-desc" class="form-label">Journal Description</label>
+            <textarea class="form-control" id="journal-desc" required></textarea>
+            <div class="invalid-feedback">Please enter a brief description for this journal.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">Submit</button>
+          <button type="button" class="btn btn-secondary btn-lg w-100 mt-4" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
