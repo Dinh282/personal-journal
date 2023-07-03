@@ -8,4 +8,16 @@ module.exports = {
       date
     ).getDate()}/${new Date(date).getFullYear()}`;
   },
+
+
+  getJournalImage: (index) => {
+    const images = [
+      "https://toruskit.com/assets/img/util/slider-violet-01.svg",
+      "https://toruskit.com/assets/img/util/slider-navy-01.svg",
+      "https://toruskit.com/assets/img/util/slider-magenta-01.svg"
+    ];
+    return images[index % images.length];
+  },
+
+
 };

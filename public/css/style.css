@@ -94,7 +94,6 @@ body {
 }
 
 
-
 /* DN */
 
 /* Below is css for applying a book style look to our journal */
@@ -170,8 +169,8 @@ body{
 /* For Journal Page Editbale-Text Area */
 
 .editable-text {
-  cursor: pointer;
-  color: blue;
+  cursor: url('../images/logo.png'), pointer;
+  /* color: blue; */
 }
 
 .line {
@@ -216,3 +215,74 @@ body{
 }
 
 /*  */
+
+.box{
+  background-color: aqua;
+}
+
+
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+}
+
+.carousel-item img{
+  object-fit: cover; /* Make the image cover the entire container */
+  width: 100%; /* Set the width to fill the container */
+  height: 100%; /* Set the height to fill the container */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%;
+  opacity: 1;
+  z-index: 9999;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  transform: scale(2);
+}
+
+.carousel-caption {
+  text-align: center;
+}
+
+.carousel-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+}
+
+.carousel-box {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.carousel-box h1,
+.carousel-box h3,
+.carousel-box p {
+  margin: 0;
+}
+
+.carousel-box h1 {
+  font-size: 72px;
+  margin-bottom: 10px;
+}
+
+.carousel-box h3 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.carousel-box p {
+  font-size: 28px;
+}

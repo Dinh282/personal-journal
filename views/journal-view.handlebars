@@ -23,17 +23,16 @@
           <div class="text-center mt-4">
           {{!-- <h1>{{journalData.title}}</h1>
           <h2>{{journalData.content}}</h2> --}}
-
          <h1 class="text-center"> {{#if journalData.title}}
             <span id="editableJournalTitle" class="editable-text" data-field="title">{{journalData.title}}</span>
           {{else}}
             <span id="editableJournalTitle" class="editable-text" data-field="title">Enter A Journal Title</span>
           {{/if}}</h1>
 
-    <h3>{{#if journalData.content}}
+           <h3>{{#if journalData.content}}
             <span id="editableJournalContent" class="editable-text" data-field="content">{{journalData.content}}</span>
           {{else}}
-            <span id="editableJournalContent" class="editable-text" data-field="content">Enter a Journal Description?</span>
+            <span id="editableJournalContent" class="editable-text" data-field="content">Enter a Journal Description</span>
           {{/if}}</h3>
 
 
@@ -64,7 +63,7 @@
         {{#if pageData.length}}
   {{#each pageData}}
     <div class="page" data-page-id="{{id}}">
-      <div class="">
+      <div class="m-4">
         <h1 class="text-center"> {{#if title}}
             <span id="editableTitle" class="editable-text" data-field="title">{{title}}</span>
           {{else}}

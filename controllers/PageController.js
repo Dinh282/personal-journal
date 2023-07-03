@@ -20,7 +20,7 @@ module.exports = {
       const journals = dbJournalData.map(journal =>
         journal.get({ plain: true })
       );
-
+        // console.log(journals)
       res.render('journals', {
         journalPageMessage: 'User Created Journals To Be Rendered Here',
         isAuthenticated: req.session.isAuthenticated,

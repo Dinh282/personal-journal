@@ -1,0 +1,76 @@
+<h1 class="text-center mt-5">{{ journalPageMessage }}</h1>
+
+<div class="container">
+<div class="text-center">
+<button class="btn btn-primary btn-lg w-25 mt-4 p-3">
+  <a href="/journals/new" style="color: inherit; text-decoration: none;">
+    Create A New Journal
+  </a>
+</button>
+</div>
+</div>
+
+
+
+<div class="container">
+{{#if journals.length}}
+
+
+  {{!-- <ul id="journal-list">
+    {{#each journals}}
+      <li>
+        <a href="/journals/view/{{this.id}}" class="btn d-flex items-center justify-between">
+          <span class="m-2 fw-bold">{{this.title}}</span>
+          <span class="m-2 fw-light">{{this.content}}</span>
+          <span class="text-sm m-2 fw-light">{{format_date createdAt}}</span>
+        </a>
+      </li>
+    {{/each}}
+  </ul> --}}
+
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {{#each journals}}
+    {{!-- <h1>{{title}}This Title</h1>  --}}
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" {{#if @first}}class="active" aria-current="true"{{/if}} aria-label="Slide {{@index}}"></button>
+    {{/each}}
+  </div>
+  {{!-- <h1>{{title}} how come this title doesnt render?</h1> --}}
+  <div class="carousel-inner">
+    
+    {{#each journals}}
+    <h1>{{title}} how come this title doesnt render?</h1>
+    <img src="/../public/images/journal-page.png/" class="img-fluid" alt="...">
+
+      <div class="carousel-item{{#if @first}} active{{/if}}">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{this.title}} </h5>
+          <p>{{this.content}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
+
+
+{{else}}
+  <h5 class="text-2xl text-center pt-8 text-stone-600">You haven't created any Journals yet. Click the Create New Journal button to start one.</h5>
+{{/if}}
+</div> 
