@@ -23,6 +23,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  overflow-x: hidden;
 }
 
 /* HERO STYLES */
@@ -138,6 +139,37 @@ form #registration-form {
 
 /* mobile form */
 @media (max-width: 60rem) {
+}
+
+/* Journal Galler Styles */
+.card {
+  position: relative;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0);
+}
+.card-img-custom {
+  height: 200px;
+  object-fit: cover;
+}
+
+.book-title {
+  background-color: var(--light);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  width: 50%;
+}
+
+.book-link {
+  font-family: 'Neucha';
+  color: var(--dark);
+  text-align: center;
+}
+
+.book-card-title {
+  padding: 0.5rem;
 }
 
 /* ----------------------------------------------- */
