@@ -1,8 +1,7 @@
-{{! DN Test }}
 <div class='inline text-center'>
-  <h1 class='text-center'>Title: {{journalData.title}}</h1>
+  {{!-- <h1 class='text-center'>Title: {{journalData.title}}</h1>
   <h2 class='text-center'> Description: {{journalData.content}}</h2>
-  <h3 class='text-center'> Created On: {{format_date journalData.date}}</h3>
+  <h3 class='text-center'> Created On: {{format_date journalData.date}}</h3> --}}
   <button
     class='btn btn-success btn-sm w-10 mt-4 p-3'
     data-id='{{this.id}}'
@@ -24,87 +23,64 @@
     id='add-new-page'
   >Add Page</button>
 </div>
-
-<div>
-  <div class='wrapper'>
-    <div class='aspect'>
-      <div class='aspect-inner'>
-        <div class='book' id='journal'>
-          <div class='cover' id='editable'><h1>{{journalData.title}}</h1>
-            <h2>Description: {{journalData.content}}</h2>
-            <h3>Created On: {{format_date journalData.date}}</h3>
-
+{{!-- <section class="container">
+<div class='swiper-container journal-swiper'>
+  <div class='swiper-wrapper'>
+          <div class="swiper-slide">
+            <div class='card slide-card'>
+              <div class='book-title'><h5
+                  class='book-card-title'
+                >{{journalData.title}}</h5></div>
+              <img class='custom-card-slider' src='/images/notebookBG.svg' />
+            </div>
           </div>
-          <div class='page'></div>
-          <div class='page'>This Journal Belongs to:</div>
+
 
           {{#if pageData.length}}
             {{#each pageData}}
-              <div class='page' data-page-id='{{id}}'>
-                <div>
-                  <h1>Title:</h1>
-                  <input type='text' class='title-input' value='{{title}}' />
-                </div>
-                <div>
-                  <h2>Content:</h2>
-                  <textarea class='content-textarea'>{{content}}</textarea>
-                </div>
-                <div>
-                  <button
-                    type='button'
-                    class='btn btn-success btn-sm w-5 p-3 save-btn'
+              <div class='swiper-slide' data-page-id='{{id}}'>
+
+                <div class='card slide-card'>
+                  <div class='book-content'>
+                    <input type='text' class='title-input book-content-title' value='{{title}}' />
+                    <textarea class='content-textarea book-content-body'>{{content}}</textarea>
+                  <div>
+                  <button type='button' class='btn btn-success btn-sm w-10 mt-4 p-3 save-btn'
                   >Save Changes</button>
-                  <button
-                    type='button'
-                    class='btn btn-danger btn-sm w-5 p-3 del-page-btn'
-                  >Delete Page</button>
+                  <button type='button' class='btn btn-danger btn-sm w-10 mt-4 p-3 del-page-btn'>Delete Page</button>
                 </div>
-              </div>
+                  </div>
+                  <img class='custom-card-slider' src='/images/notebookPage.svg' />
+                </div>
+              <div>
             {{/each}}
-          {{else}}
-            <p class='text-2xl text-center pt-8 text-stone-600'></p>
           {{/if}}
+  <div class='swiper-pagination'></div>
+</div>
+</section> --}}
 
-          <div class='page'>
-
-            <div>
-              <h1>Page Title</h1>
-              <button
-                type='button'
-                class='btn btn-success btn-sm w-5 p-3'
-                onclick=''
-              >Edit Title</button>
-            </div>
-
-            <div>
-              <h2>Page Content</h2>
-              <button
-                type='button'
-                class='btn btn-success btn-sm w-5 p-3'
-                onclick=''
-              >Edit Page</button>
-            </div>
-
-          </div>
-
-          <div class='page'></div>
-          <div class='page'></div>
-          <div class='page'></div>
-          {{! <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> }}
-          <div class='cover'></div>
-        </div>
+<section class=''>
+  <div class='page-container'>
+    <div class='book-content'>
+      <input
+        type='text'
+        class='title-input book-content-title'
+        value='{{title}}'
+      />
+      <textarea
+        class='content-textarea book-content-body'
+      >{{content}}</textarea>
+      <div>
+        <button
+          type='button'
+          class='btn btn-success btn-sm w-10 mt-4 p-3 save-btn'
+        >Save Changes</button>
+        <button
+          type='button'
+          class='btn btn-danger btn-sm w-10 mt-4 p-3 del-page-btn'
+        >Delete Page</button>
       </div>
     </div>
+    <img class='custom-card-slider' src='/images/notebookPage.svg' />
   </div>
-
-</div>
-
-{{! we can use charmonman font for the users journal entries. it is a nice cursive }}
-
-{{! DN Test }}
-<script src='/js/pageTurnHandler.js'></script>
-<script src='/js/edit-delete-journal.js'></script>
-<script src='/js/page-edi-del-cre.js'></script>
-{{!  }}
-
-{{! DN Test }}
+</section>
