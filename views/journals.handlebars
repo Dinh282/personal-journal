@@ -16,7 +16,7 @@
   </button>
 </div>
 
-{{#if journals.length}}
+{{!-- {{#if journals.length}}
   <ul id='journal-list'>
     {{#each journals}}
       <li>
@@ -35,4 +35,22 @@
 {{else}}
   <h5 class='text-2xl text-center pt-8 text-stone-600'>You haven't created any
     Journals yet. Click the Create New Journal button to start one.</h5>
-{{/if}}
+{{/if}} --}}
+
+<div class='row'>
+  {{#if journals.length}}
+    <section id='journal-list'>
+      {{#each journals}}
+        <div class='col-lg-2 col-md-4 col-sm-6 mb-4'>
+          <div class='card'>
+            <img class='img-fluid' src='../public/images/notebookBG.svg' />
+          </div>
+        </div>
+      {{/each}}
+    </section>
+  {{else}}
+    <h5 class='text-2xl text-center pt-8 text-stone-600'>You haven't created any
+      Journals yet. Click the Create New Journal button to start one.</h5>
+  {{/if}}
+
+</div>
