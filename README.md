@@ -36,7 +36,7 @@ Here is a list of our motivations for this project!
 
 - Dinh Nguyen - nguyen_dinh282@yahoo.com
   <br/>
-- Thomas Rose-Meyer - dmschopler@gmail.com
+- Thomas Rose-Meyer - prettiest.robot@gmail.com
   <br/>
 - Chandler Harris - astiiyia.dj@gmail.com
   <br/>
