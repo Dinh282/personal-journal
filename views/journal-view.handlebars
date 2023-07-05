@@ -1,86 +1,98 @@
-<div class='inline text-center'>
-  {{!-- <h1 class='text-center'>Title: {{journalData.title}}</h1>
-  <h2 class='text-center'> Description: {{journalData.content}}</h2>
-  <h3 class='text-center'> Created On: {{format_date journalData.date}}</h3> --}}
-  <button
-    class='btn btn-success btn-sm w-10 mt-4 p-3'
-    data-id='{{this.id}}'
-    id='edit-journal-btn'
-  >
-    Edit Journal Title and Description
-  </button>
-  <button class='btn btn-danger btn-sm w-10 mt-4 p-3' id='delete-journal-btn'>
-    Delete Journal
-  </button>
-  <button
-    type='button'
-    class='btn btn-secondary btn-sm w-10 mt-4 p-3'
-    onclick='history.back()'
-  >Go Back</button>
-  <button
-    type='button'
-    class='btn btn-secondary btn-sm w-10 mt-4 p-3'
-    id='add-new-page'
-  >Add Page</button>
-</div>
-{{!-- <section class="container">
-<div class='swiper-container journal-swiper'>
-  <div class='swiper-wrapper'>
-          <div class="swiper-slide">
-            <div class='card slide-card'>
-              <div class='book-title'><h5
-                  class='book-card-title'
-                >{{journalData.title}}</h5></div>
-              <img class='custom-card-slider' src='/images/notebookBG.svg' />
+<nav class='pages-nav inline text-center pt-2 pb-1'>
+  <div class='nav-container'>
+    <button
+      class='btn btn-success btn-sm w-10 p-3'
+      data-id='{{this.id}}'
+      id='edit-journal-btn'
+    >
+      Edit Journal Title and Description
+    </button>
+    <button class='btn btn-danger btn-sm w-10 p-3' id='delete-journal-btn'>
+      Delete Journal
+    </button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3'
+      onclick='history.back()'
+    >Go Back</button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3'
+      id='add-new-page'
+    >Add Page</button>
+  </div>
+  <div class='pages-nav-toggle pt-1'>
+    <hr />
+    <hr />
+    <hr />
+  </div>
+</nav>
+
+<div class='section-wrapper'>
+  <div class='container'>
+    <div class='row align-items-center'>
+      <div class='col-lg-4'>
+        <div class='swiper-active'>
+
+          <!-- Additional required wrapper -->
+          <div class='swiper-wrapper'>
+            <!-- Slides -->
+            <div class='swiper-slide'>
+              <div class='swiper-container'>
+                <div class='swiper-content'>
+                  <div class='book-title'><h5
+                      class='book-card-title title-selector'
+                    >{{journalData.title}}</h5>
+                  </div>
+                  <div>
+                    <p
+                      class='content-selector cover-content'
+                    >{{journalData.content}}</p>
+                  </div>
+                </div>
+                <img class='img-fluid' src='/images/notebookBG.svg' alt='' />
+              </div>
             </div>
+            {{#if pageData.length}}
+              {{#each pageData}}
+                <div class='swiper-slide'>
+                  <div class='swiper-container'>
+                    <div class='swiper-content'>
+                      <div class='page-text'>
+                        <div class='page-title'><h5
+                            class='title-selector'
+                          >{{this.title}}</h5></div>
+                        <div class='page-content'><p
+                            class='content-selector'
+                          >{{this.content}}</p></div>
+                      </div>
+                    </div>
+                    <img
+                      class='img-fluid'
+                      src='/images/notebookPage.svg'
+                      alt=''
+                    />
+                  </div>
+                </div>
+              {{/each}}
+            {{/if}}
           </div>
 
+          <!-- If we need pagination -->
+          <div class='swiper-pagination'></div>
 
-          {{#if pageData.length}}
-            {{#each pageData}}
-              <div class='swiper-slide' data-page-id='{{id}}'>
-
-                <div class='card slide-card'>
-                  <div class='book-content'>
-                    <input type='text' class='title-input book-content-title' value='{{title}}' />
-                    <textarea class='content-textarea book-content-body'>{{content}}</textarea>
-                  <div>
-                  <button type='button' class='btn btn-success btn-sm w-10 mt-4 p-3 save-btn'
-                  >Save Changes</button>
-                  <button type='button' class='btn btn-danger btn-sm w-10 mt-4 p-3 del-page-btn'>Delete Page</button>
-                </div>
-                  </div>
-                  <img class='custom-card-slider' src='/images/notebookPage.svg' />
-                </div>
-              <div>
-            {{/each}}
-          {{/if}}
-  <div class='swiper-pagination'></div>
-</div>
-</section> --}}
-
-<section class=''>
-  <div class='page-container'>
-    <div class='book-content'>
-      <input
-        type='text'
-        class='title-input book-content-title'
-        value='{{title}}'
-      />
-      <textarea
-        class='content-textarea book-content-body'
-      >{{content}}</textarea>
-      <div>
-        <button
-          type='button'
-          class='btn btn-success btn-sm w-10 mt-4 p-3 save-btn'
-        >Save Changes</button>
-        <button
-          type='button'
-          class='btn btn-danger btn-sm w-10 mt-4 p-3 del-page-btn'
-        >Delete Page</button>
+        </div>
+      </div>
+      <div class='col-lg-8'>
+        <div class='box-content'>
+          <h2 id='slide-title'>{{journalData.title}}</h2>
+          <span class='line-bar'></span>
+          <p id='slide-content'>{{journalData.content}}</p>
+          <button href='#' class='btn btn-danger btn-sm w-10'>Edit Page</button>
+        </div>
       </div>
     </div>
-    <img class='custom-card-slider' src='/images/notebookPage.svg' />
   </div>
-</section>
+</div>
+
+<script src='/js/swiperjs-config.js'></script>

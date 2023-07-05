@@ -1,5 +1,5 @@
 {{! <section id='journal-list'> }}
-<section class='container mt-5 p-3 gallery-container'>
+<section class='container p-3 gallery-container'>
   {{!-- <h1 class='text-center mt-5'>{{journalPageMessage}}</h1> --}}
   <div class='text-center'>
     <button class='btn btn-secondary btn-lg w-25 mt-4 p-3'>
@@ -8,28 +8,74 @@
       </a>
     </button>
   </div>
-  <div class='row pt-5'>
+  <div class='row'>
     {{#if journals.length}}
+      <div class='section-wrapper'>
+        <div class='container'>
+          <div class='row align-items-center'>
+            <div class='col-lg-4'>
+              <div class='swiper-active'>
 
-      {{#each journals}}
-        <div class='col-lg-2 col-md-4 col-sm-6 mb-4'>
-          <a class='book-link' href='/journals/view/{{this.id}}'>
-            <div class='card'>
-              <div class='book-title'><h5
-                  class='book-card-title'
-                >{{this.title}}</h5></div>
-              <img class='custom-card-img' src='/images/notebookBG.svg' />
+                <!-- Additional required wrapper -->
+                <div class='swiper-wrapper'>
+                  <!-- Slides -->
+
+                  {{#if journals.length}}
+                    {{#each journals}}
+                      <div class='swiper-slide'>
+                        <a class='book-link' href='/journals/view/{{this.id}}'>
+                          <div class='swiper-container'>
+                            <div class='swiper-content'>
+
+                              <div class='book-title'><h5
+                                  class='book-card-title title-selector'
+                                >{{this.title}}</h5>
+                              </div>
+                              <div>
+                                <p
+                                  class='content-selector cover-content'
+                                >{{this.content}}</p>
+                              </div>
+                            </div>
+                            <img
+                              class='img-fluid'
+                              src='/images/notebookBG.svg'
+                              alt=''
+                            />
+                          </div>
+                        </a>
+                      </div>
+                    {{/each}}
+                  {{/if}}
+                </div>
+
+                <!-- If we need pagination -->
+                <div class='swiper-pagination'></div>
+
+              </div>
             </div>
-          </a>
+            <div class='col-lg-8'>
+              <div class='box-content'>
+                <h2 id='slide-title'>{{journalData.title}}</h2>
+                <span class='line-bar'></span>
+                <p id='slide-content'>{{journalData.content}}</p>
+                <button href='#' class='btn btn-danger btn-sm w-10'>Edit Journal</button>
+              </div>
+            </div>
+          </div>
         </div>
-      {{/each}}
+      </div>
 
     {{else}}
-      <h5 class='text-2xl text-center pt-8 text-stone-600'>You haven't created
-        any Journals yet. Click the Create New Journal button to start one.</h5>
+      <div class='px-4 py-5 my-5 text-center p2-hero'>
+        <h1 class='display-5 fw-bold hero-headline'>Please click the create
+          journal button to create your first journal.</h1>
+      </div>
     {{/if}}
 
   </div>
 </section>
 
+<script src='/js/swiperjs-config.js'></script>
+{{! </section> }}
 {{! </section> }}
