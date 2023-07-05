@@ -23,8 +23,6 @@ document
   .querySelector('#add-new-page')
   .addEventListener('click', newJournalPageHandler);
 
-
-  
 const deleteJournalPageHandler = async event => {
   const pageId = event.target.closest('.page').dataset.pageId;
 
