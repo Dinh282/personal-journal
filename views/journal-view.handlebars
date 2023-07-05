@@ -1,110 +1,164 @@
-{{! DN Test }}
-<div class='inline text-center'>
-  <h1 class='text-center'>Title: {{journalData.title}}</h1>
-  <h2 class='text-center'> Description: {{journalData.content}}</h2>
-  <h3 class='text-center'> Created On: {{format_date journalData.date}}</h3>
-  <button
-    class='btn btn-success btn-sm w-10 mt-4 p-3'
-    data-id='{{this.id}}'
-    id='edit-journal-btn'
-  >
-    Edit Journal Title and Description
-  </button>
-  <button class='btn btn-danger btn-sm w-10 mt-4 p-3' id='delete-journal-btn'>
-    Delete Journal
-  </button>
-  <button
-    type='button'
-    class='btn btn-secondary btn-sm w-10 mt-4 p-3'
-    onclick='history.back()'
-  >Go Back</button>
-  <button
-    type='button'
-    class='btn btn-secondary btn-sm w-10 mt-4 p-3'
-    id='add-new-page'
-  >Add Page</button>
+<nav class='pages-nav inline text-center pt-2 pb-1'>
+  <div class='nav-container'>
+    {{!-- <button
+      class='btn btn-success btn-sm w-10 p-3'
+      data-id='{{this.id}}'
+      id='edit-journal-btn'
+    > --}}
+     <button
+      class='btn btn-success btn-sm w-10 p-3'
+      data-id='{{this.id}}'
+      {{!-- id='edit-journal-btn' --}}
+      data-bs-toggle="modal" 
+      data-bs-target="#myJournalEditModal"
+    >
+    {{!-- <button href='#' class='btn btn-danger btn-sm w-10' id="" data-bs-toggle="modal" data-bs-target="#myJournalEditModal">Edit Journal</button> --}}
+      Edit Journal Title and Description
+    </button>
+    <button class='btn btn-danger btn-sm w-10 p-3 delete-journal-btn' id=''>
+      Delete Journal
+    </button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3'
+      onclick='history.back()'
+    >Go Back</button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3'
+      id='add-new-page'
+    >Add Page</button>
+  </div>
+  <div class='pages-nav-toggle pt-1'>
+    <hr />
+    <hr />
+    <hr />
+  </div>
+</nav>
+
+<div class='section-wrapper'>
+  <div class='container'>
+    <div class='row align-items-center'>
+      <div class='col-lg-4'>
+        <div class='swiper-active'>
+
+          <!-- Additional required wrapper -->
+          <div class='swiper-wrapper'>
+            <!-- Slides -->
+            <div class='swiper-slide'>
+              <div class='swiper-container'>
+                <div class='swiper-content'>
+                  <div class='book-title'><h5
+                      class='book-card-title title-selector'
+                    >{{journalData.title}}</h5>
+                  </div>
+                  <div>
+                    <p
+                      class='content-selector cover-content'
+                    >{{journalData.content}}</p>
+                  </div>
+                </div>
+                <img class='img-fluid' src='/images/notebookBG.svg' alt='' />
+              </div>
+            </div>
+            {{#if pageData.length}}
+              {{#each pageData}}
+                <div class='swiper-slide'>
+                  <div class='swiper-container'>
+                    <div class='swiper-content'>
+                      <div class='page-text'>
+                        <div class='page-title'><h5
+                            class='title-selector'
+                          >{{this.title}}</h5></div>
+                        <div class='page-content'><p
+                            class='content-selector'
+                          >{{this.content}}</p></div>
+                      </div>
+                    </div>
+                    <img
+                      class='img-fluid'
+                      src='/images/notebookPage.svg'
+                      alt=''
+                    />
+                  </div>
+                </div>
+              {{/each}}
+            {{/if}}
+          </div>
+
+          <!-- If we need pagination -->
+          <div class='swiper-pagination'></div>
+
+        </div>
+      </div>
+      <div class='col-lg-8'>
+        <div class='box-content'>
+          <h2 id='slide-title'>{{journalData.title}}</h2>
+          <span class='line-bar'></span>
+          <p id='slide-content'>{{journalData.content}}</p>
+          <button href='#' class='btn btn-danger btn-sm w-10'>Edit Page</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div>
-  <div class='wrapper'>
-    <div class='aspect'>
-      <div class='aspect-inner'>
-        <div class='book' id='journal'>
-          <div class='cover' id='editable'><h1>{{journalData.title}}</h1>
-            <h2>Description: {{journalData.content}}</h2>
-            <h3>Created On: {{format_date journalData.date}}</h3>
-
-          </div>
-          <div class='page'></div>
-          <div class='page'>This Journal Belongs to:</div>
-
-          {{#if pageData.length}}
-            {{#each pageData}}
-              <div class='page' data-page-id='{{id}}'>
-                <div>
-                  <h1>Title:</h1>
-                  <input type='text' class='title-input' value='{{title}}' />
-                </div>
-                <div>
-                  <h2>Content:</h2>
-                  <textarea class='content-textarea'>{{content}}</textarea>
-                </div>
-                <div>
-                  <button
-                    type='button'
-                    class='btn btn-success btn-sm w-5 p-3 save-btn'
-                  >Save Changes</button>
-                  <button
-                    type='button'
-                    class='btn btn-danger btn-sm w-5 p-3 del-page-btn'
-                  >Delete Page</button>
-                </div>
-              </div>
-            {{/each}}
-          {{else}}
-            <p class='text-2xl text-center pt-8 text-stone-600'></p>
-          {{/if}}
-
-          <div class='page'>
-
-            <div>
-              <h1>Page Title</h1>
-              <button
-                type='button'
-                class='btn btn-success btn-sm w-5 p-3'
-                onclick=''
-              >Edit Title</button>
-            </div>
-
-            <div>
-              <h2>Page Content</h2>
-              <button
-                type='button'
-                class='btn btn-success btn-sm w-5 p-3'
-                onclick=''
-              >Edit Page</button>
-            </div>
-
-          </div>
-
-          <div class='page'></div>
-          <div class='page'></div>
-          <div class='page'></div>
-          {{! <div class="page"><img src="https://picsum.photos/200/300.jpg" draggable="false" alt="" /></div> }}
-          <div class='cover'></div>
+ <!-- Modal for journal delete -->
+  <div id="confirmationModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this journal?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="confirmDelete" class="btn btn-danger">Delete</button>
+          <button id="cancelDelete" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
 
+  
+{{!-- Modal for Journal Edit --}}
+
+
+<!-- Modal -->
+<div class="modal fade" id="myJournalEditModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Edit Journal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-journal-form" class="shadow p-4 bg-body rounded requires-validation" novalidate>
+          <div class="mb-3">
+            <label for="journal-title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="journal-title" required>
+            <div class="invalid-feedback">Please enter a new title for your Journal</div>
+          </div>
+          <div class="mb-3">
+            <label for="journal-desc" class="form-label">Journal Description</label>
+            <textarea class="form-control" id="journal-desc" required></textarea>
+            <div class="invalid-feedback">Please enter a new description for this journal.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">Submit</button>
+          <button type="button" class="btn btn-secondary btn-lg w-100 mt-4" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
-//we can use charmonman font for the users journal entries. it is a nice cursive
 
-{{! DN Test }}
-<script src='/js/pageTurnHandler.js'></script>
-<script src='/js/edit-delete-journal.js'></script>
-<script src='/js/page-edi-del-cre.js'></script>
-{{!  }}
+{{!-- Modal for Journal Edit --}}
 
-{{! DN Test }}
+<script src='/js/swiperjs-config.js'></script>
+ <script src="/js/edit-delete-journal.js"></script>
+  <script src="/js/page-edi-del-cre.js"></script>
