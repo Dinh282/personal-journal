@@ -51,8 +51,11 @@ const deleteJournal = async event => {
    const confirmBtn = document.getElementById('confirmDelete');
    confirmBtn.addEventListener('click', async () => {
      // Extract the journal ID from the current URL
-     const url = window.location.href;
-     const journalId = url.substring(url.lastIndexOf('/') + 1);
+
+    //  const url = window.location.href;
+    //  const journalId = url.substring(url.lastIndexOf('/') + 1);
+
+    const journalId = document.querySelector('.swiper-slide').getAttribute('data-journal-id');
  
      try {
        const response = await fetch(`/api/journals/view/${journalId}`, {
@@ -79,13 +82,15 @@ const deleteJournal = async event => {
   
 const editJournal = async () => {
     // Extract the journal ID from the current URL
-    const url = window.location.href;
-    const journalId = url.substring(url.lastIndexOf('/') + 1);
+    // const url = window.location.href;
+    // const journalId = url.substring(url.lastIndexOf('/') + 1);
     // const title = prompt('Enter the new journal title:');
     // const content = prompt('Enter the new journal content:');
+
+    const journalId = document.querySelector('.swiper-slide').getAttribute('data-journal-id');
   
-    const title = document.querySelector('#journal-title').value.trim();
-    const content = document.querySelector('#journal-desc').value.trim();
+    const title = document.querySelector('#edit-journal-title').value.trim();
+    const content = document.querySelector('#edit-journal-desc').value.trim();
 
     // Prepare the updated journal data
     const updatedJournalData = {
@@ -105,7 +110,7 @@ const editJournal = async () => {
   
       if (response.ok) {
         // Journal updated successfully, redirect to a new page
-        window.location.href = '/journals'; // Replace '/journals' with the desired URL
+        window.location.reload(); // Replace '/journals' with the desired URL
       } else {
         const { message } = await response.json();
         console.error(message);
@@ -127,3 +132,4 @@ document
   document
     .querySelector('.delete-journal-btn')
     .addEventListener('click', deleteJournal);
+
