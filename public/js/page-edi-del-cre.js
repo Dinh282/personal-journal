@@ -29,8 +29,6 @@ addNewPageButtons.forEach(button => {
 //   .querySelector('.add-new-page')
 //   .addEventListener('click', newJournalPageHandler);
 
-
-  
 const deleteJournalPageHandler = async event => {
   // Create a Bootstrap modal
   const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
