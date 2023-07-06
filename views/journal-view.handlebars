@@ -1,18 +1,12 @@
 <nav class='pages-nav inline text-center pt-2 pb-1'>
   <div class='nav-container'>
-    {{!-- <button
-      class='btn btn-success btn-sm w-10 p-3'
-      data-id='{{this.id}}'
-      id='edit-journal-btn'
-    > --}}
+ 
      <button
       class='btn btn-success btn-sm w-10 p-3'
       data-id='{{this.id}}'
-      {{!-- id='edit-journal-btn' --}}
       data-bs-toggle="modal" 
       data-bs-target="#myJournalEditModal"
     >
-    {{!-- <button href='#' class='btn btn-danger btn-sm w-10' id="" data-bs-toggle="modal" data-bs-target="#myJournalEditModal">Edit Journal</button> --}}
       Edit Journal Title and Description
     </button>
     <button class='btn btn-danger btn-sm w-10 p-3 delete-journal-btn' data-journal-id='{{this.id}}'>
@@ -137,7 +131,6 @@
 
 {{! Modal for Journal Edit }}
 
-<!-- Modal -->
 <div
   class='modal fade'
   id='myJournalEditModal'
@@ -189,8 +182,6 @@
 </div>
 
 
-{{!-- Modal for Journal Edit --}}
-
 <!-- Modal for Journal Page Edit -->
    <div class="modal fade" id="myJournalPageEditModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -220,8 +211,6 @@
 </div>
 
 
-
-
 <!-- Modal for Journal Page Edit -->
    <div class="modal fade" id="myJournalPageEditModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -249,8 +238,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <script src='/js/swiperjs-config.js'></script>

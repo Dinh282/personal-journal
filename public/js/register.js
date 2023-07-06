@@ -6,6 +6,15 @@ const registrationHandler = async event => {
   const email = document.querySelector('#email').value.trim();
   const password = document.querySelector('#password').value.trim();
 
+  if(password.length < 7){
+    showAlert({
+      target: 'registration-alert',
+      message: 'Password is too short, it must be at least 7 characters long!',
+      type: 'danger',
+    });
+    return
+  }
+
   if (email && password) {
     const response = await fetch('/api/register', {
       method: 'POST',

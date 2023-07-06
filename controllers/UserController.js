@@ -7,7 +7,20 @@ module.exports = {
       body: { firstName, lastName, email, password },
     } = req;
     try {
-      const user = await User.create({
+
+      let user = await User.findOne({
+        where: { email },
+        attributes: { exclude: ['createdAt, updatedAt'] },
+      });
+
+      if(user){
+        res.status(400).json({
+          message: 'An account with this email already exists. Please sign up with a different email!',
+        });
+        return;
+      }
+     
+       user = await User.create({
         firstName,
         lastName,
         email,

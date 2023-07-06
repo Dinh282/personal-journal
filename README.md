@@ -13,6 +13,20 @@ The Personal Journal app is designed with the user in mind to make an easier exp
 5. The Journal and the entries themselves will be saved within your profile and you will be able to come back and edit, delete or create a new entry at any time.
 6. You can make as many journals as you want and just remember, while typing may not have the same feel as writing, it allows you to epmty your mind much faster!
 
+The following are screenshots of the application:
+
+Screenshot of the Homepage:
+
+![Screenshot of Homepage](./public/images/homepage.jpg)
+
+Screenshot of the Journals page:
+
+![Screenshot of Homepage](./public/images/journals.jpg)
+
+Screenshot of the Individual Journal Pages:
+
+![Screenshot of Homepage](./public/images/pages.jpg)
+
 ## Motivation
 
 Here is a list of our motivations for this project!
@@ -28,6 +42,8 @@ Here is a list of our motivations for this project!
 ## Deployed Application
 
 [Click here to go to the Personal Journal Heroku application!](https://personal-journal-e23df6a117fd.herokuapp.com/)
+
+
 
 ## Contributors
 
