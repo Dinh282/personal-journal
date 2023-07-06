@@ -33,4 +33,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   swiper.emit('slideChange'); // Manually trigger slideChange event on initialization
+
+  // Add media query for mobile screens
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    const mobileSwiper = new Swiper('.swiper-active', {
+      direction: 'horizontal',
+      slidesPerView: 'auto',
+      freeMode: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+
+    mobileSwiper.on('init', function () {
+      updateBoxContent(); // Update the box content on initialization for mobile screens
+    });
+
+    mobileSwiper.on('slideChange', function () {
+      updateBoxContent(); // Update the box content on slide change for mobile screens
+    });
+
+    mobileSwiper.emit('slideChange'); // Manually trigger slideChange event on initialization for mobile screens
+  }
 });
