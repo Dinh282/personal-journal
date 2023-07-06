@@ -1,36 +1,39 @@
-<div class='mobile-nav-container'>
-  <nav class='pages-nav inline text-center pt-2 pb-1'>
-
-    <div class='nav-container'>
-      <button
-        class='btn btn-success btn-sm w-10 p-3'
-        data-id='{{this.id}}'
-        data-bs-toggle='modal'
-        data-bs-target='#myJournalEditModal'
-      >
-        Edit Journal Title and Description
-      </button>
-      <button class='btn btn-danger btn-sm w-10 p-3 delete-journal-btn' id=''>
-        Delete Journal
-      </button>
-      <button
-        type='button'
-        class='btn btn-secondary btn-sm w-10 p-3'
-        onclick='history.back()'
-      >Go Back</button>
-      <button
-        type='button'
-        class='btn btn-secondary btn-sm w-10 p-3'
-        id='add-new-page'
-      >Add Page</button>
-    </div>
-    <div class='pages-nav-toggle pt-1'>
-      <hr />
-      <hr />
-      <hr />
-    </div>
-  </nav>
-</div>
+<nav class='pages-nav inline text-center pt-2 pb-1'>
+  <div class='nav-container'>
+    {{!-- <button
+      class='btn btn-success btn-sm w-10 p-3'
+      data-id='{{this.id}}'
+      id='edit-journal-btn'
+    > --}}
+     <button
+      class='btn btn-success btn-sm w-10 p-3'
+      data-id='{{this.id}}'
+      {{!-- id='edit-journal-btn' --}}
+      data-bs-toggle="modal" 
+      data-bs-target="#myJournalEditModal"
+    >
+    {{!-- <button href='#' class='btn btn-danger btn-sm w-10' id="" data-bs-toggle="modal" data-bs-target="#myJournalEditModal">Edit Journal</button> --}}
+      Edit Journal Title and Description
+    </button>
+    <button class='btn btn-danger btn-sm w-10 p-3 delete-journal-btn' data-journal-id='{{this.id}}'>
+      Delete Journal
+    </button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3'
+      onclick='window.location.href = "/journals"'
+    >Go Back</button>
+    <button
+      type='button'
+      class='btn btn-secondary btn-sm w-10 p-3 add-new-page'
+    >Add Page</button>
+  </div>
+  <div class='pages-nav-toggle pt-1'>
+    <hr />
+    <hr />
+    <hr />
+  </div>
+</nav>
 
 <div class='section-wrapper'>
   <div class='container'>
@@ -41,7 +44,7 @@
           <!-- Additional required wrapper -->
           <div class='swiper-wrapper'>
             <!-- Slides -->
-            <div class='swiper-slide'>
+            <div class='swiper-slide' data-journal-id="{{journalData.id}}">
               <div class='swiper-container'>
                 <div class='swiper-content'>
                   <div class='book-title'><h5
@@ -59,11 +62,11 @@
             </div>
             {{#if pageData.length}}
               {{#each pageData}}
-                <div class='swiper-slide'>
+                <div class='swiper-slide query-for-page' data-page-id="{{this.id}}">
                   <div class='swiper-container'>
                     <div class='swiper-content'>
                       <div class='page-text'>
-                        <div class='page-title'><h5
+                        <div class='page-title'><h5 
                             class='title-selector'
                           >{{this.title}}</h5></div>
                         <div class='page-content'><p
@@ -92,7 +95,9 @@
           <h2 id='slide-title'>{{journalData.title}}</h2>
           <span class='line-bar'></span>
           <p id='slide-content'>{{journalData.content}}</p>
-          <button href='#' class='btn btn-danger btn-sm w-10'>Edit Page</button>
+          <button type="button" class="btn btn-success btn-sm w-10 edit-journal-page-btn" data-bs-toggle="modal" data-bs-target="#myJournalPageEditModal{{@index}}">Edit Page</button>
+          <button href='#' class='btn btn-primary btn-sm w-10 add-new-page'>Add New Page</button>
+          <button href='#' class='btn btn-danger btn-sm w-10 del-journal-page-btn'>Delete Page</button>
         </div>
       </div>
     </div>
@@ -151,28 +156,18 @@
           aria-label='Close'
         ></button>
       </div>
-      <div class='modal-body'>
-        <form
-          id='edit-journal-form'
-          class='shadow p-4 bg-body rounded requires-validation'
-          novalidate
-        >
-          <div class='mb-3'>
-            <label for='journal-title' class='form-label'>Title</label>
-            <input
-              type='text'
-              class='form-control'
-              id='journal-title'
-              required
-            />
-            <div class='invalid-feedback'>Please enter a new title for your
-              Journal</div>
+      <div class="modal-body">
+        <form id="edit-journal-form" class="shadow p-4 bg-body rounded requires-validation" novalidate>
+          <div class="mb-3">
+            <label for="journal-title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="edit-journal-title" required>
+            <div class="invalid-feedback">Please enter a new title for your Journal</div>
           </div>
           <div class='mb-3'>
             <label for='journal-desc' class='form-label'>Journal Description</label>
             <textarea
               class='form-control'
-              id='journal-desc'
+              id='edit-journal-desc'
               required
             ></textarea>
             <div class='invalid-feedback'>Please enter a new description for
@@ -193,7 +188,70 @@
   </div>
 </div>
 
-{{! Modal for Journal Edit }}
+
+{{!-- Modal for Journal Edit --}}
+
+<!-- Modal for Journal Page Edit -->
+   <div class="modal fade" id="myJournalPageEditModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Edit Journal Page</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-journal-page-form" class="shadow p-4 bg-body rounded requires-validation" novalidate>
+          <div class="mb-3">
+            <label for="journal-title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="edit-journal-page-title" required>
+            <div class="invalid-feedback">Please enter a title for this Page</div>
+          </div>
+          <div class="mb-3">
+            <label for="journal-desc" class="form-label">Page Content</label>
+            <textarea class="form-control" id="edit-journal-page-desc" required></textarea>
+            <div class="invalid-feedback">Please enter the content for this page.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">Submit</button>
+          <button type="button" class="btn btn-secondary btn-lg w-100 mt-4" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal for Journal Page Edit -->
+   <div class="modal fade" id="myJournalPageEditModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Edit Journal Page</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-journal-page-form" class="shadow p-4 bg-body rounded requires-validation" novalidate>
+          <div class="mb-3">
+            <label for="journal-title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="edit-journal-page-title" required>
+            <div class="invalid-feedback">Please enter a title for this Page</div>
+          </div>
+          <div class="mb-3">
+            <label for="journal-desc" class="form-label">Page Content</label>
+            <textarea class="form-control" id="edit-journal-page-desc" required></textarea>
+            <div class="invalid-feedback">Please enter the content for this page.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">Submit</button>
+          <button type="button" class="btn btn-secondary btn-lg w-100 mt-4" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <script src='/js/swiperjs-config.js'></script>
 <script src='/js/edit-delete-journal.js'></script>
