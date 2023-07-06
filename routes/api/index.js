@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { UserController, PageController, JournalPagesController } = require('../../controllers');
+const {
+  UserController,
+  PageController,
+  JournalPagesController,
+} = require('../../controllers');
 const JournalController = require('../../controllers/JournalController');
 
 const isAuthenticated = require('../../middleware/isAuthenticated');
@@ -14,6 +18,5 @@ router.put('/journals/view/:id', isAuthenticated, JournalController.editJournal)
 router.post('/new-page/:id', isAuthenticated, JournalPagesController.createNewJournalPage);//
 router.delete('/delete-journal-page/:id', isAuthenticated, JournalPagesController.deleteJournalPage)//
 router.put('/edit-journal-page/:id', isAuthenticated, JournalPagesController.editJournalPage)//
-
 
 module.exports = router;

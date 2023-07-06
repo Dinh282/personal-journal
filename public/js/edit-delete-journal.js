@@ -1,24 +1,25 @@
 const deleteJournal = async event => {
 
   event.preventDefault();
-   // Create a Bootstrap modal
-   const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+  // Create a Bootstrap modal
+  const modal = new bootstrap.Modal(
+    document.getElementById('confirmationModal')
+  );
 
-  
-    // Attach event handler for the cancel button
-    const cancelBtn = document.getElementById('cancelDelete');
-    cancelBtn.addEventListener('click', () => {
-      modal.hide();
-    });
+  // Attach event handler for the cancel button
+  const cancelBtn = document.getElementById('cancelDelete');
+  cancelBtn.addEventListener('click', () => {
+    modal.hide();
+  });
 
-    // Attach event handler for the close button (x)
-    const closeBtn = document.querySelector('#confirmationModal .close');
-    closeBtn.addEventListener('click', () => {
-      modal.hide();
-    });
+  // Attach event handler for the close button (x)
+  const closeBtn = document.querySelector('#confirmationModal .close');
+  closeBtn.addEventListener('click', () => {
+    modal.hide();
+  });
 
- // Show the modal
-   modal.show();
+  // Show the modal
+  modal.show();
 
    // Handle the confirmation
    const confirmBtn = document.getElementById('confirmDelete');
@@ -48,7 +49,7 @@ const deleteJournal = async event => {
 
 
 };
-  
+
 const editJournal = async () => {
  
     const journalId = document.querySelector('.swiper-slide').getAttribute('data-journal-id');
@@ -85,8 +86,8 @@ const editJournal = async () => {
   };
 
 document
-.querySelector('#edit-journal-form')
-.addEventListener('submit', editJournal);
+  .querySelector('#edit-journal-form')
+  .addEventListener('submit', editJournal);
 
 document
 .querySelector('.delete-journal-btn')

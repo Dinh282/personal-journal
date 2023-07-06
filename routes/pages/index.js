@@ -13,5 +13,4 @@ router.get('/dashboard', isAuthenticated, PageController.getDashboard);
 router.get('/journals', isAuthenticated, PageController.getJournals);
 router.get('/journals/view/:id', isAuthenticated, PageController.viewJournalPages);
 
-
 module.exports = router;
