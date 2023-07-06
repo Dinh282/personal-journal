@@ -1,15 +1,11 @@
-{{! <section id='journal-list'> }}
 <section class='container p-3 gallery-container'>
-  {{!-- <h1 class='text-center mt-5'>{{journalPageMessage}}</h1> --}}
   <div class='text-center new-button-container'>
     <button
       class='new-journal-btn btn btn-small w-10'
       data-bs-toggle='modal'
       data-bs-target='#myModal'
     >
-      {{! <a href='' style='color: inherit; text-decoration: none;'> }}
       Create New Journal
-      {{! </a> }}
     </button>
   </div>
   <div class='row'>
@@ -63,7 +59,6 @@
                 <h2 id='slide-title'>{{journalData.title}}</h2>
                 <span class='line-bar'></span>
                 <p id='slide-content'>{{journalData.content}}</p>
-                {{!-- <button href='#' class='btn btn-danger btn-sm w-10' id="edit-journal-btn">Edit Journal</button> --}}
                 <button href='#' class='btn btn-success btn-sm w-10' data-bs-toggle="modal" data-bs-target="#myJournalEditModal">Edit Journal</button>
                 <button class='btn btn-danger btn-sm w-10 delete-journal-btn'>
                   Delete Journal
@@ -83,14 +78,6 @@
 
   </div>
 </section>
-
-{{! Modal for New Journal }}
-<!-- Button to trigger the modal -->
-{{! <div class="d-flex justify-content-center" >
-  <button type="button" class="btn btn-primary w-25 mt-4 mb-4 p-3 mx-auto" data-bs-toggle="modal" data-bs-target="#myModal">
-    Create A New Journal
-  </button>
-</div>   }}
 
 <!-- Modal -->
 <div
@@ -154,7 +141,6 @@
 
 {{! Modal for Journal Edit }}
 
-<!-- Modal -->
 <div
   class='modal fade'
   id='myJournalEditModal'
@@ -200,7 +186,6 @@
   </div>
 </div>
 
-{{! Modal for Journal Edit }}
 
 <!-- Modal for journal delete -->
   <div id="confirmationModal" class="modal" tabindex="-1" role="dialog">
@@ -223,11 +208,7 @@
     </div>
   </div>
 
-
-
 <script src='/js/swiperjs-config.js'></script>
 <script src='/js/new-journal-form.js'></script>
 <script src='/js/edit-delete-journal.js'></script>
 
-{{! </section> }}
-{{! </section> }}

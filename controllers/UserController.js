@@ -8,7 +8,7 @@ module.exports = {
     } = req;
     try {
 
-      const user = await User.findOne({
+      let user = await User.findOne({
         where: { email },
         attributes: { exclude: ['createdAt, updatedAt'] },
       });
