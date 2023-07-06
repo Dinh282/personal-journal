@@ -25,7 +25,8 @@ const deleteJournal = async event => {
    const confirmBtn = document.getElementById('confirmDelete');
    confirmBtn.addEventListener('click', async () => {
    
-    const journalId = document.querySelector('.swiper-slide').getAttribute('data-journal-id');
+    const journalId = document.querySelector('.swiper-slide[data-journal-id].swiper-slide-active')
+    .getAttribute('data-journal-id');
  
      try {
        const response = await fetch(`/api/journals/view/${journalId}`, {
