@@ -19,14 +19,48 @@ const newJournalPageHandler = async event => {
   }
 };
 
-document
-  .querySelector('#add-new-page')
-  .addEventListener('click', newJournalPageHandler);
+const addNewPageButtons = document.querySelectorAll('.add-new-page');
+
+addNewPageButtons.forEach(button => {
+  button.addEventListener('click', newJournalPageHandler);
+});
+
+// document
+//   .querySelector('.add-new-page')
+//   .addEventListener('click', newJournalPageHandler);
 
 
   
 const deleteJournalPageHandler = async event => {
-  const pageId = event.target.closest('.page').dataset.pageId;
+  // Create a Bootstrap modal
+  const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+
+  
+  // Attach event handler for the cancel button
+  const cancelBtn = document.getElementById('cancelDelete');
+  cancelBtn.addEventListener('click', () => {
+    modal.hide();
+  });
+
+  // Attach event handler for the close button (x)
+  const closeBtn = document.querySelector('#confirmationModal .close');
+  closeBtn.addEventListener('click', () => {
+    modal.hide();
+  });
+
+// Show the modal
+ modal.show();
+
+ // Handle the confirmation
+ const confirmBtn = document.getElementById('confirmDelete');
+ confirmBtn.addEventListener('click', async () => {
+   // Extract the journal ID from the current URL
+
+  //  const url = window.location.href;
+  //  const journalId = url.substring(url.lastIndexOf('/') + 1);
+
+  const pageId = document.querySelector('.query-for-page').getAttribute('data-page-id');
+
 
   try {
     // Send a DELETE request to the server to delete the page
@@ -48,50 +82,58 @@ const deleteJournalPageHandler = async event => {
     // An error occurred during the fetch request
     console.log('Error deleting page:', error);
   }
+});//
 };
 
-const deleteButtons = document.querySelectorAll('.del-page-btn');
+const deleteButtons = document.querySelectorAll('.del-journal-page-btn');
 
 deleteButtons.forEach(button => {
   button.addEventListener('click', deleteJournalPageHandler);
 });
 
+
+
+
 const editJournalPageHandler = async event => {
-  const pageId = event.target.closest('.page').dataset.pageId;
-  // Get the updated title and content values from the input fields/textarea
 
-  const title = event.target
-    .closest('.page')
-    .querySelector('.title-input').value;
-  const content = event.target
-    .closest('.page')
-    .querySelector('.content-textarea').value;
+    // Get the data-page-id attribute from the closest swiper-content element
+    // const pageId = event.target.closest('.modal-content').querySelector('.swiper-content').getAttribute('data-page-id');
+    const pageId = document.querySelector('.query-for-page').getAttribute('data-page-id');
+  
 
-  try {
-    // Send a PUT request to the server to delete the page
-    const response = await fetch(`/api/edit-journal-page/${pageId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, content }), // Pass the updated title and content in the request body
-    });
+    // Get the title and content values from the form
+    const title = document.getElementById('edit-journal-page-title').value;
+    const content = document.getElementById('edit-journal-page-desc').value;
 
-    if (response.ok) {
-      console.log('Page Edit successfully');
-      window.location.reload();
-    } else {
-      // Page edit failed
-      console.log('Failed to edit page');
+  
+    try {
+      // Send a PUT request to the server to update the page
+      const response = await fetch(`/api/edit-journal-page/${pageId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, content }), // Pass the updated title and content in the request body
+      });
+  
+      if (response.ok) {
+        console.log('Page edited successfully');
+        // window.location.reload();
+      } else {
+        // Page edit failed
+        console.log('Failed to edit page');
+      }
+    } catch (error) {
+      // An error occurred during the fetch request
+      console.log('Error editing page:', error);
     }
-  } catch (error) {
-    // An error occurred during the fetch request
-    console.log('Error editing page:', error);
-  }
+
 };
 
-const editButtons = document.querySelectorAll('.save-btn');
+document
+.querySelector('#edit-journal-page-form')
+.addEventListener('submit', editJournalPageHandler);
 
-editButtons.forEach(button => {
-  button.addEventListener('click', editJournalPageHandler);
-});
+// document
+// .querySelector('.edit-journal-page')
+// .addEventListener('click', editJournalPageHandler);

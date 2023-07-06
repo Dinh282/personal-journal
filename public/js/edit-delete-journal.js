@@ -129,7 +129,7 @@ document
 .querySelector('#edit-journal-form')
 .addEventListener('submit', editJournal);
 
-  document
-    .querySelector('.delete-journal-btn')
-    .addEventListener('click', deleteJournal);
+document
+.querySelector('.delete-journal-btn')
+.addEventListener('click', deleteJournal);
 
