@@ -13,11 +13,11 @@ Page.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     content: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     journalId: {
       type: DataTypes.UUID,
@@ -32,6 +32,7 @@ Page.init(
     sequelize,
     underscored: true,
     modelName: 'page',
+    freezeTableName: true,
   }
 );
 
